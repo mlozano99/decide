@@ -11,10 +11,7 @@ public class Comunidad implements Serializable {
 	
 	private String twitter; 
 	
-    /**
-     * Para JOSE: Aqui tendras que ver si es de este tipo o como debe ser
-     */
-	private String gps;
+	private PosicionGPS gps;
 	
 	private String alcance;
 	
@@ -23,7 +20,7 @@ public class Comunidad implements Serializable {
 	/**
 	 * Para JOSE: Hará falta que haya una función que tenga esta API:
 	 *   
-	 *   public boolean isUsuarioEnRadioComunidad(String gpsUsuario, String gpsComunidad);
+	 *   public boolean isUsuarioEnRadioComunidad(PosicionGPS gpsUsuario, PosicionGPS gpsComunidad);
 	 *   
 	 *   Esta función dirá si esta o no en el radio de la comunidad.
 	 */
@@ -50,11 +47,11 @@ public class Comunidad implements Serializable {
 		this.twitter = twitter;
 	}
 
-	public String getGps() {
+	public PosicionGPS getGps() {
 		return gps;
 	}
 
-	public void setGps(String gps) {
+	public void setGps(PosicionGPS gps) {
 		this.gps = gps;
 	}
 

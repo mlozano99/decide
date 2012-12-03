@@ -12,6 +12,11 @@ public class Usuario implements Serializable{
 	 */
 	private String email;	
 	
+	/**
+	 * Registro GCM del usuario en la aplicacion
+	 */
+	private String idRegistration;
+	
 	private String telefono;
 	
 	private String nombre;	
@@ -68,6 +73,14 @@ public class Usuario implements Serializable{
 
 	public void setSuscripciones(List<Suscripcion> suscripciones) {
 		this.suscripciones = suscripciones;
+	}
+
+	public String getIdRegistration() {
+		return idRegistration;
+	}
+
+	public void setIdRegistration(String idRegistration) {
+		this.idRegistration = idRegistration;
 	}
 	
 	
