@@ -30,6 +30,7 @@ public class Comunidad implements Serializable {
 	
 	private List<Suscripcion> suscriptores;
 	
+	private List<Encuesta> encuestas;
 	
 	public String getNombre() {
 		return nombre;
@@ -94,7 +95,13 @@ public class Comunidad implements Serializable {
 	public void setSuscriptores(List<Suscripcion> suscriptores) {
 		this.suscriptores = suscriptores;
 	}
-	
-	
+
+	public List<Encuesta> getEncuestas() {
+		return encuestas;
+	}
+
+	public void setEncuestas(List<Encuesta> encuestas) {
+		this.encuestas = encuestas;
+	}	
 	
 }

@@ -14,6 +14,8 @@ public class Encuesta implements Serializable{
 	
 	private List<Pregunta> preguntas;
 	
+	private Comunidad comunidad;
+	
 	
 	public Date getFechaLimite() {
 		return fechaLimite;
@@ -34,6 +36,12 @@ public class Encuesta implements Serializable{
 	}
 	public void setPreguntas(List<Pregunta> preguntas) {
 		this.preguntas = preguntas;
+	}
+	public Comunidad getComunidad() {
+		return comunidad;
+	}
+	public void setComunidad(Comunidad comunidad) {
+		this.comunidad = comunidad;
 	}
 	
 }
