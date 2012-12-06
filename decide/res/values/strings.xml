@@ -1,8 +1,23 @@
 <resources>
 
+    
+    
+ <!-- Textos globales -->   
+    
+    
     <string name="app_name">decide</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="menu_settings">Configuración</string>
+    <string name="title_activity_main">Decide</string>
 
+    
+    
+    
+    
+    
+<!-- Textos locales. Se especifica cada layout -->   
+    <string name="hello_world">Una prueba para subir un commit</string>
+     
+    
+    
+    
 </resources>
