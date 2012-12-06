@@ -1,22 +1,19 @@
 <resources>
 
-    
-    
- <!-- Textos globales -->   
-    
-    
+    <!-- Textos globales -->
+
     <string name="app_name">decide</string>
     <string name="menu_settings">Configuración</string>
-    <string name="title_activity_main">Decide</string>
 
-    
-    
-    
-    
-    
-<!-- Textos locales. Se especifica cada layout -->   
+    <!-- Textos locales. Se especifica cada layout -->
     <string name="hello_world">Una prueba para subir un commit</string>
-     
+    <string name="title_activity_main">Decide</string>
+    <string name="title_activity_base">BaseActivity</string>
+    
+    <!-- Textos locales. l_location_activity -->
+    <string name="latitud">Latitud</string>
+    <string name="longitud">Longitud</string>
+    <string name="desconocido">Desconocida</string>
     
     
     
