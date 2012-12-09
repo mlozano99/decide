@@ -10,22 +10,17 @@ import android.location.LocationManager;
 
 import android.os.Bundle;
 import android.provider.Settings;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class trataGPS implements LocationListener {
+public class u_trataGPS implements LocationListener {
 
-	private TextView latituteField;
-	private TextView longitudeField;
-	private LocationManager locationManager;
-	private LocationListener locationListener;
-	private String provider;
-	private boolean gps_activado;
 	private Location location;
+	private LocationManager locationManager;
+	private boolean gps_activado;
 	private Context contexto;
 	
-	public trataGPS(Context contexto) {
+	public u_trataGPS(Context contexto) {
 		this.contexto=contexto;
 		
 	}    
