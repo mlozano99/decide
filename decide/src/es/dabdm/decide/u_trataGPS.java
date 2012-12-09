@@ -19,10 +19,11 @@ public class u_trataGPS implements LocationListener {
 	private LocationManager locationManager;
 	private boolean gps_activado;
 	private Context contexto;
+	private u_dialogos alerta;
 	
 	public u_trataGPS(Context contexto) {
 		this.contexto=contexto;
-		
+		this.alerta=new u_dialogos(this.contexto);
 	}    
 	    
 	public void activar_gps(){
@@ -33,11 +34,11 @@ public class u_trataGPS implements LocationListener {
 			gps_activado = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 		}
 		catch (Exception e){			
-			showExceptionDialog(R.string.locationManager);
+			alerta.showExceptionDialog(R.string.locationManager);
 		}
 		    
 		if (!gps_activado) {
-			showActivarGPS();
+			alerta.showActivarGPS();
 		 } 		 
 	 }
 	
@@ -51,7 +52,7 @@ public class u_trataGPS implements LocationListener {
 			  }
 		}
 		catch (Exception e) {
-			showExceptionDialog(R.string.locationManager);
+			alerta.showExceptionDialog(R.string.locationManager);
 		}
 	}
 	
@@ -95,7 +96,7 @@ public class u_trataGPS implements LocationListener {
 	
 	
 	
-	
+	/*
 	private void showActivarGPS()
 	{
 		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(contexto);
@@ -127,7 +128,7 @@ public class u_trataGPS implements LocationListener {
 		
 		AlertDialog alertDialog = dialogBuilder.create();
 		alertDialog.show();
-	}
+	}*/
 	    		
 	
 
