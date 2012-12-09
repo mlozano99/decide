@@ -1,30 +1,21 @@
 
+[09/12/2012 José]
+Pantallas - Activities. 1ª Aproximación
+Básico que tenemos que construir
 
-
-// Acquire a reference to the system Location Manager
-LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-// Define a listener that responds to location updates
-LocationListener locationListener = new LocationListener() {
-    public void onLocationChanged(Location location) {
-      // Called when a new location is found by the network location provider.
-      makeUseOfNewLocation(location);
-    }
-
-    public void onStatusChanged(String provider, int status, Bundle extras) {}
-
-    public void onProviderEnabled(String provider) {}
-
-    public void onProviderDisabled(String provider) {}
-  };
-
-// Register the listener with the Location Manager to receive location updates
-locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+1.	Pantalla principal
+(MainActivity)
+2.	Pantalla de lista de comunidades (se podrá buscar …ya lo veremos)
+(ComunidadesActivity)
+3.	Pantalla detalle comunidad (incorpora la suscripción y/o borrado)
+(ComunidadDetalleActivity)
+4.	Pantalla lista de preguntas (ya sean respondidas o no)
+(PreguntasActivity)
+5.	Pantalla detalle de cada pregunta (se podrá responder o ver respuesta)
+(PreguntasDetalleActivity)
+6.	Pantalla de alta (registro) de usuario
+(UsuarioActivity)
 
 
 
-
-
-
-Ver cuando se estabiliza el GPS
 
