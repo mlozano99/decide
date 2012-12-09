@@ -28,6 +28,6 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="LocationActivity" />
+        <activity android:name="ComunidesActivity" />
 </application>    
 </manifest>

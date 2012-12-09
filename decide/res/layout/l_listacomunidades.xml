@@ -1,0 +1,29 @@
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TextView
+            android:id="@+id/textTituloLComunidades"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"            
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="false"
+            android:textSize="20sp"
+            android:text="@string/titulo_lista_comu" />
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:listSelector="@drawable/list_selector"
+            android:layout_below="@+id/textTituloLComunidades"            
+            android:focusable="true" >
+            
+        </ListView>
+        
+    </RelativeLayout>
+        <!-- @+id/listaComunidades   
+        android:listSelector="@drawable/list_selector"
+        -->
