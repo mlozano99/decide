@@ -14,6 +14,10 @@
     <string name="latitud">Latitud</string>
     <string name="longitud">Longitud</string>
     <string name="desconocido">Desconocida</string>
+
+    <string name="muestraGPS">¿Quieres activar el GPS?</string>
+    <string name="locationManager">Error ocurrido en al activar el GPS "Location Manager"</string>
+    
     
     
     
