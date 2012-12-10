@@ -33,8 +33,12 @@ Interface con el servidor.
    http://...../listacomunidades?tipo=general 
    Nota: estudiaremos si es necesario quitar información a los objetos comunidad
 
-2. Comunidad por proximidad (el usuario demanda comunidades por proximidad en un radio)
+2. Comunidad por proximidad 
+   (el usuario demanda comunidades por proximidad en un radio)
+
 3. El usuario envia al servidor una suscripción a una comunidad
+
+
 
 Notificaciones
 3. Un comunitiymanager envía una pregunta a su comunidad, 
@@ -42,9 +46,14 @@ Notificaciones
 
 4. Sobre publicidad.
 	El usuario recibe notificaciones cunado esté cerca de sitios comerciales
-	Siempre se estará enviando la posición GPS para hacer esto
+	Siempre se estará enviando la posición GPS para hacer esto.
+	Otra posibilidad es que las notificaciones lleguen a todo terminal con la aplicación y que 
+	la aplicación vea si se está en la zona de influencia
 	
 	
 
+////////////////////////////////////////////////////////////
+ViewPager
+Estrate
 
 
