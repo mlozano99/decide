@@ -1,3 +1,9 @@
+Consideraciones si implementamos esto
+Soporte a:
+IMS QTI (Question and Test Interoperability specification: 
+http://en.wikipedia.org/wiki/QTI), 
+
+
 
 [09/12/2012 José]
 Pantallas - Activities. 1ª Aproximación
@@ -9,6 +15,7 @@ Básico que tenemos que construir
 (ComunidadesActivity)
 3.	Pantalla detalle comunidad (incorpora la suscripción y/o borrado)
 (ComunidadDetalleActivity)
+
 4.	Pantalla lista de preguntas (ya sean respondidas o no)
 (PreguntasActivity)
 5.	Pantalla detalle de cada pregunta (se podrá responder o ver respuesta)
@@ -16,6 +23,28 @@ Básico que tenemos que construir
 6.	Pantalla de alta (registro) de usuario
 (UsuarioActivity)
 
+
+
+[10/12/12 José]
+Interface con el servidor.
+
+1. Lista de comunidades generalistas (al comienzo de la aplicación)
+   Método : get
+   http://...../listacomunidades?tipo=general 
+   Nota: estudiaremos si es necesario quitar información a los objetos comunidad
+
+2. Comunidad por proximidad (el usuario demanda comunidades por proximidad en un radio)
+3. El usuario envia al servidor una suscripción a una comunidad
+
+Notificaciones
+3. Un comunitiymanager envía una pregunta a su comunidad, 
+	la recibirán aquellos que estén suscritos a esa comunidad
+
+4. Sobre publicidad.
+	El usuario recibe notificaciones cunado esté cerca de sitios comerciales
+	Siempre se estará enviando la posición GPS para hacer esto
+	
+	
 
 
 
