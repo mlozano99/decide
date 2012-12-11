@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
 			public void onClick(View v) 
 			{
 				startActivity(
-					new Intent(MainActivity.this,ComunidesActivity.class));
+					new Intent(MainActivity.this,ComunidadesActivity.class));
 			}	
 		});
 	    

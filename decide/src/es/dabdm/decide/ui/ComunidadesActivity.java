@@ -2,26 +2,19 @@ package es.dabdm.decide.ui;
 
 
 import java.util.ArrayList;
-
 import es.dabdm.decide.R;
-import es.dabdm.decide.R.layout;
 import es.dabdm.decide.util.LVA_Comunidades;
 import es.dabdm.decide.util.LVI_generico;
-import android.util.*;
 import android.app.ListActivity;
-import android.location.Location;
+import android.content.Intent;
 import android.os.Bundle;
-
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.TextView;
-import android.view.View;
+
+
 
 
 public class ComunidadesActivity extends ListActivity {
@@ -62,11 +55,53 @@ public class ComunidadesActivity extends ListActivity {
 	   //lista = (ListView) findViewById(android.R.id.list);
 	   //lista.setAdapter(listaAdaptador);
 	   
-	   setListAdapter(listaAdaptador);
-	   
-	   
+	   setListAdapter(listaAdaptador);	   
+	   ListView lista = getListView();
+	 
+	   lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
+				// TODO Auto-generated method stub
+				onLongListItemClick(v,pos,id);
+				return true;
+			}		   
+	   	});
 	   
 	}
+	
+	protected void onLongListItemClick(View v,int pos,long id){
+		Intent i = new Intent(this,ComunidadesDetalleActivity.class);
+		
+		LVI_generico item = listaAdaptador.getItem(pos);
+		i.putExtra("Comunidad",item.getTitle());		
+		startActivity(i);  
+		this.overridePendingTransition(R.anim.a_entra,R.anim.a_sale); 
+	
+		
+		Log.i( "A:", "onLongListItemClick id=" + id ); 
+		
+	}
+	
+	
+	
+	
+
+
+
+
+/*
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		// TODO Auto-generated method stub	
+		super.onListItemClick(l, v, position, id);
+		startActivity(
+				new Intent(this,ComunidadesDetalleActivity.class));
+		
+	}
+
+
+*/
+	
 	
 	public void llenar_lista(){
 		datos.add("Belgica");

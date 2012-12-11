@@ -31,12 +31,25 @@ Interface con el servidor.
 1. Lista de comunidades generalistas (al comienzo de la aplicación)
    Método : get
    http://...../comunidades?tipo=general 
-   Nota: estudiaremos si es necesario quitar información a los objetos comunidad Notific
 
-2. Comunidad por proximidad 
+2. Suscripción:Un usuario se suscribe a una comunidad 
+   Método put. 
+   Parámetros
+   usuario:email@.. comunidad:id
+   http://...../suscribir?usuario &id_comunidad 
+
+3. Usuario se borra de una comunidad      
+   Método put. 
+   Parámetros
+   usuario:email@.. comunidad:id
+   http://...../desuscribir?usuario &id_comunidad   
+      
+      
+      
+4. Comunidad por proximidad 
    (el usuario demanda comunidades por proximidad en un radio)
 
-3. El usuario envia al servidor una suscripción a una comunidad
+5. El usuario envia al servidor una suscripción a una comunidad
 
 
 

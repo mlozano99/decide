@@ -38,11 +38,13 @@
             </intent-filter>
       	</activity>
                 
-      <activity android:name="es.dabdm.decide.ui.ComunidesActivity" />
-     
+      <activity android:name="es.dabdm.decide.ui.ComunidadesActivity" />
       <activity android:name="es.dabdm.decide.ui.DemoActivity" />
-     
-	      <!--
+	  <activity android:name="es.dabdm.decide.ui.ComunidadesDetalleActivity" />
+	  
+	  
+	  
+	  <!--
 	       BroadcastReceiver that will receive intents from GCM
 	       services and handle them to the custom IntentService.
 	

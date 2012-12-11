@@ -53,6 +53,10 @@ public class LVA_Comunidades extends ArrayAdapter<LVI_generico> {
         
         return convertView;
     }
+    
+    
+    
+    
 }
 	
 
