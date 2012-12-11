@@ -3,19 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/b_comu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="174dp"
+        android:layout_marginTop="103dp"
         android:text="@string/titulo_lista_comu" />
-    
 
-
+    <Button
+        android:id="@+id/b_gcm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/b_comu"
+        android:layout_alignRight="@+id/b_comu"
+        android:layout_centerVertical="true"
+        android:text="@string/titulo_Test_GCM" />
 
 </RelativeLayout>

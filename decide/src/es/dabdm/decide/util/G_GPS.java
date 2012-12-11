@@ -1,5 +1,7 @@
-package es.dabdm.decide;
+package es.dabdm.decide.util;
 
+import es.dabdm.decide.R;
+import es.dabdm.decide.R.string;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,17 +15,17 @@ import android.provider.Settings;
 import android.widget.Toast;
 
 
-public class u_trataGPS implements LocationListener {
+public class G_GPS implements LocationListener {
 
 	private Location location;
 	private LocationManager locationManager;
 	private boolean gps_activado;
 	private Context contexto;
-	private u_dialogos alerta;
+	private M_Dialogos alerta;
 	
-	public u_trataGPS(Context contexto) {
+	public G_GPS(Context contexto) {
 		this.contexto=contexto;
-		this.alerta=new u_dialogos(this.contexto);
+		this.alerta=new M_Dialogos(this.contexto);
 	}    
 	    
 	public void activar_gps(){

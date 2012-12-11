@@ -1,5 +1,6 @@
-package es.dabdm.decide;
+package es.dabdm.decide.util;
 
+import es.dabdm.decide.R;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,10 +8,16 @@ import android.provider.Settings;
 import android.content.Context;
 
 
-public class u_dialogos {
+/* Clase para mostrar diálogos 
+ * en cualquier parte de la aplicación
+ */
+
+
+
+public class M_Dialogos {
 	private Context contexto;
 	
-	public u_dialogos(Context contexto){
+	public M_Dialogos(Context contexto){
 		this.contexto=contexto;
 	}
 	

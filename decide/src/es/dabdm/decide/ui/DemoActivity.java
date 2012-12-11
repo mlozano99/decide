@@ -13,14 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package es.dabdm.decide;
+package es.dabdm.decide.ui;
 
-import static es.dabdm.decide.CommonUtilities.DISPLAY_MESSAGE_ACTION;
-import static es.dabdm.decide.CommonUtilities.EXTRA_MESSAGE;
-import static es.dabdm.decide.CommonUtilities.SENDER_ID;
-import static es.dabdm.decide.CommonUtilities.SERVER_URL;
+import static es.dabdm.decide.util.GCM_CommonUtilities.DISPLAY_MESSAGE_ACTION;
+import static es.dabdm.decide.util.GCM_CommonUtilities.EXTRA_MESSAGE;
+import static es.dabdm.decide.util.GCM_CommonUtilities.SENDER_ID;
+import static es.dabdm.decide.util.GCM_CommonUtilities.SERVER_URL;
+
 
 import com.google.android.gcm.GCMRegistrar;
+
+import es.dabdm.decide.R;
+import es.dabdm.decide.R.id;
+import es.dabdm.decide.R.layout;
+import es.dabdm.decide.R.menu;
+import es.dabdm.decide.R.string;
+import es.dabdm.decide.util.GCM_ServerUtilities;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -38,7 +46,7 @@ import android.widget.TextView;
  * Main UI for the demo app.
  */
 public class DemoActivity extends Activity {
-
+	
     TextView mDisplay;
     AsyncTask<Void, Void, Void> mRegisterTask;
 
@@ -74,8 +82,7 @@ public class DemoActivity extends Activity {
 
                     @Override
                     protected Void doInBackground(Void... params) {
-                        boolean registered =
-                                ServerUtilities.register(context, regId);
+                        boolean registered = GCM_ServerUtilities.register(context, regId);
                         // At this point all attempts to register with the app
                         // server failed, so we need to unregister the device
                         // from GCM - the app will try to register again when
@@ -151,8 +158,7 @@ public class DemoActivity extends Activity {
         }
     }
 
-    private final BroadcastReceiver mHandleMessageReceiver =
-            new BroadcastReceiver() {
+    private final BroadcastReceiver mHandleMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String newMessage = intent.getExtras().getString(EXTRA_MESSAGE);

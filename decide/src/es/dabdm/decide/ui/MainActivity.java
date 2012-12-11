@@ -1,8 +1,13 @@
-package es.dabdm.decide;
+package es.dabdm.decide.ui;
 
 
 
 
+import es.dabdm.decide.R;
+import es.dabdm.decide.R.id;
+import es.dabdm.decide.R.layout;
+import es.dabdm.decide.R.menu;
+import es.dabdm.decide.util.G_GPS;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -13,7 +18,7 @@ import android.widget.ListView;
 
 
 public class MainActivity extends BaseActivity {	
-	private u_trataGPS tGPS;
+	private G_GPS tGPS;
     
 	
 	@Override
@@ -22,12 +27,12 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.l_main_activity);
        
 	    
-        tGPS = new u_trataGPS(this);
+        tGPS = new G_GPS(this);
 	    tGPS.activar_gps();
 	    tGPS.iniciar_gps();  
     	
-	    Button b1 = (Button) findViewById(R.id.button1);
-	    		b1.setOnClickListener(new View.OnClickListener() 
+	    Button b1 = (Button) findViewById(R.id.b_comu);
+	    b1.setOnClickListener(new View.OnClickListener() 
 		{
 			@Override
 			public void onClick(View v) 
@@ -36,7 +41,20 @@ public class MainActivity extends BaseActivity {
 					new Intent(MainActivity.this,ComunidesActivity.class));
 			}	
 		});
-	    	    
+	    
+
+	    Button b2 = (Button) findViewById(R.id.b_gcm);
+	    b2.setOnClickListener(new View.OnClickListener() 
+		{
+			@Override
+			public void onClick(View v) 
+			{
+				startActivity(
+					new Intent(MainActivity.this,DemoActivity.class));
+			}	
+		});
+	    
+	    
 	    
 	    
     }

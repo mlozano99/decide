@@ -1,4 +1,4 @@
-package es.dabdm.decide;
+package es.dabdm.decide.ui;
 
 
 import android.location.Location;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package es.dabdm.decide;
+package es.dabdm.decide.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,12 +22,12 @@ import android.content.Intent;
  * Helper class providing methods and constants common to other classes in the
  * app.
  */
-public final class CommonUtilities {
+public final class GCM_CommonUtilities {
 
     /**
      * Base URL of the Demo Server (such as http://my_host:8080/gcm-demo)
      */
-    static final String SERVER_URL = "http://pentec2.upvnet.upv.es:8080/servidorDecide/rest";
+    public static final String SERVER_URL = "http://pentec2.upvnet.upv.es:8080/servidorDecide/rest";
 
     //
     //Key for server apps (with IP locking) 
@@ -36,26 +36,28 @@ public final class CommonUtilities {
     
     //  Key for browser apps (with referers)
     //   AIzaSyBGCf3qjp0qSwyJjXLozGbD2AH1Sbpm43I
+    // 1006589151461
+    
     /**
      * Google API project id registered to use GCM.
      */
-    static final String SENDER_ID = "AIzaSyCuZugAylt6lK9hSIIMdQmcTQAJn0RWH3M";
+    public static final String SENDER_ID = "1006589151461";
 
     /**
      * Tag used on log messages.
      */
-    static final String TAG = "GCMDemo";
+    public static final String TAG = "GCMDemo";
 
     /**
      * Intent used to display a message in the screen.
      */
-    static final String DISPLAY_MESSAGE_ACTION =
+    public static final String DISPLAY_MESSAGE_ACTION =
             "com.google.android.gcm.demo.app.DISPLAY_MESSAGE";
 
     /**
      * Intent's extra that contains the message to be displayed.
      */
-    static final String EXTRA_MESSAGE = "message";
+    public static final String EXTRA_MESSAGE = "message";
 
     /**
      * Notifies UI to display a message.

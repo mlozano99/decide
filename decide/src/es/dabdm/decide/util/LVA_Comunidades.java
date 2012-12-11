@@ -1,6 +1,9 @@
-package es.dabdm.decide;
+package es.dabdm.decide.util;
 
 import java.util.ArrayList;
+
+import es.dabdm.decide.R;
+import es.dabdm.decide.R.id;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
-public class u_ListViewAdapter extends ArrayAdapter<u_ListViewItem> {
+public class LVA_Comunidades extends ArrayAdapter<LVI_generico> {
 
-    private ArrayList<u_ListViewItem> items;
+    private ArrayList<LVI_generico> items;
     private Context contexto;
     static class ViewHolder {
         TextView title;
@@ -20,7 +23,7 @@ public class u_ListViewAdapter extends ArrayAdapter<u_ListViewItem> {
     
     private ViewHolder holder;  
     
-    public u_ListViewAdapter(Context context, int ViewResourceId, ArrayList<u_ListViewItem> items) {
+    public LVA_Comunidades(Context context, int ViewResourceId, ArrayList<LVI_generico> items) {
         super(context, ViewResourceId, items);
         this.items = items;
         this.contexto=context;
@@ -45,7 +48,7 @@ public class u_ListViewAdapter extends ArrayAdapter<u_ListViewItem> {
             holder = (ViewHolder) convertView.getTag();
         }
         
-        u_ListViewItem elemento = items.get(position);        
+        LVI_generico elemento = items.get(position);        
         holder.title.setText(elemento.getTitle());
         
         return convertView;

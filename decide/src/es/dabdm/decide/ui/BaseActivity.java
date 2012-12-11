@@ -1,6 +1,8 @@
-package es.dabdm.decide;
+package es.dabdm.decide.ui;
 
 
+import es.dabdm.decide.R;
+import es.dabdm.decide.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;

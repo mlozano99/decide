@@ -18,9 +18,11 @@
     <string name="muestraGPS">¿Quieres activar el GPS?</string>
     <string name="locationManager">Error ocurrido en al activar el GPS "Location Manager"</string>
     
+    
+    
     <string name="titulo_lista_comu">Lista de comunidades</string>
     
-    
+    <string name="titulo_Test_GCM">Test de GCM</string>
     
     
     

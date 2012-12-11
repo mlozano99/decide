@@ -1,7 +1,12 @@
-package es.dabdm.decide;
+package es.dabdm.decide.ui;
 
 
 import java.util.ArrayList;
+
+import es.dabdm.decide.R;
+import es.dabdm.decide.R.layout;
+import es.dabdm.decide.util.LVA_Comunidades;
+import es.dabdm.decide.util.LVI_generico;
 import android.util.*;
 import android.app.ListActivity;
 import android.location.Location;
@@ -24,7 +29,7 @@ public class ComunidesActivity extends ListActivity {
 	ListView lista;
 	ArrayAdapter<String> adaptador;
 	ArrayList datos;
-	u_ListViewAdapter listaAdaptador;
+	LVA_Comunidades listaAdaptador;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,18 +46,18 @@ public class ComunidesActivity extends ListActivity {
 	   */
 	      
        
-       ArrayList<u_ListViewItem> items = new ArrayList<u_ListViewItem>();
-       items.add(new u_ListViewItem("Belgica"));
-       items.add(new u_ListViewItem("Holanda"));
-       items.add(new u_ListViewItem("Francia"));
-       items.add(new u_ListViewItem("Alemania"));
-       items.add(new u_ListViewItem("Francia"));
-       items.add(new u_ListViewItem("Alemania"));
-       items.add(new u_ListViewItem("Francia"));
-       items.add(new u_ListViewItem("Alemania"));
+       ArrayList<LVI_generico> items = new ArrayList<LVI_generico>();
+       items.add(new LVI_generico("Belgica"));
+       items.add(new LVI_generico("Holanda"));
+       items.add(new LVI_generico("Francia"));
+       items.add(new LVI_generico("Alemania"));
+       items.add(new LVI_generico("Francia"));
+       items.add(new LVI_generico("Alemania"));
+       items.add(new LVI_generico("Francia"));
+       items.add(new LVI_generico("Alemania"));
 	   
 
-	   listaAdaptador = new u_ListViewAdapter(this, R.layout.l_list_item, items); 
+	   listaAdaptador = new LVA_Comunidades(this, R.layout.l_list_item, items); 
 	   
 	   //lista = (ListView) findViewById(android.R.id.list);
 	   //lista.setAdapter(listaAdaptador);

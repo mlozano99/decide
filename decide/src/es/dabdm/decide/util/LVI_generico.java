@@ -1,9 +1,9 @@
-package es.dabdm.decide;
+package es.dabdm.decide.util;
 
-public class u_ListViewItem {
+public class LVI_generico {
 	private String title;
 
-    public u_ListViewItem(String title) {
+    public LVI_generico(String title) {
         super();
         this.title = title;
     }
