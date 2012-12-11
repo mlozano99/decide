@@ -6,6 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-public class ComunidesDetalleActivity extends BaseActivity {
+public class ComunidadesDetalleActivity extends BaseActivity {
 
 }

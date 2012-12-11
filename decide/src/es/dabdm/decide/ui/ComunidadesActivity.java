@@ -24,7 +24,7 @@ import android.widget.TextView;
 import android.view.View;
 
 
-public class ComunidesActivity extends ListActivity {
+public class ComunidadesActivity extends ListActivity {
 
 	ListView lista;
 	ArrayAdapter<String> adaptador;
