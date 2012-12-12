@@ -1,12 +1,16 @@
 package es.dabdm.decide.modelo;
 
 import java.io.Serializable;
-import java.util.List;
+
+
+
 
 public class Comunidad implements Serializable {
 
 	private static final long serialVersionUID = 2544867380337063679L;
 
+	private Integer idComunidad;
+	
 	private String nombre;
 	
 	private String twitter; 
@@ -17,21 +21,30 @@ public class Comunidad implements Serializable {
 	
 	private String tipo;
 	
-	/**
-	 * Para JOSE: Hará falta que haya una función que tenga esta API:
-	 *   
-	 *   public boolean isUsuarioEnRadioComunidad(PosicionGPS gpsUsuario, PosicionGPS gpsComunidad);
-	 *   
-	 *   Esta función dirá si esta o no en el radio de la comunidad.
-	 */
 	private Integer radio;
 
 	private ComunityManager gestor;
 	
-	private List<Suscripcion> suscriptores;
-	
-	private List<Encuesta> encuestas;
-	
+
+    public Comunidad() {
+	}
+    
+    
+    
+	public Comunidad(String nombre, String twitter, PosicionGPS gps,
+			String alcance, String tipo, Integer radio, ComunityManager gestor) {
+		super();
+		this.nombre = nombre;
+		this.twitter = twitter;
+		this.gps = gps;
+		this.alcance = alcance;
+		this.tipo = tipo;
+		this.radio = radio;
+		this.gestor = gestor;
+	}
+
+
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -88,20 +101,15 @@ public class Comunidad implements Serializable {
 		this.gestor = gestor;
 	}
 
-	public List<Suscripcion> getSuscriptores() {
-		return suscriptores;
+
+	public Integer getIdComunidad() {
+		return idComunidad;
 	}
 
-	public void setSuscriptores(List<Suscripcion> suscriptores) {
-		this.suscriptores = suscriptores;
+	public void setIdComunidad(Integer idComunidad) {
+		this.idComunidad = idComunidad;
 	}
 
-	public List<Encuesta> getEncuestas() {
-		return encuestas;
-	}
-
-	public void setEncuestas(List<Encuesta> encuestas) {
-		this.encuestas = encuestas;
-	}	
+	
 	
 }

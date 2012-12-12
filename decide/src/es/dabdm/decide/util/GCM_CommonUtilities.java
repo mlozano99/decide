@@ -27,7 +27,7 @@ public final class GCM_CommonUtilities {
     /**
      * Base URL of the Demo Server (such as http://my_host:8080/gcm-demo)
      */
-    public static final String SERVER_URL = "http://pentec2.upvnet.upv.es:8080/servidorDecide/rest";
+    public static final String SERVER_URL = "http://pentec2.upvnet.upv.es:8081/servidorDecide/rest";
 
     //
     //Key for server apps (with IP locking) 
