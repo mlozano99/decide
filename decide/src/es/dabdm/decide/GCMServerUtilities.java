@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package es.dabdm.decide.util;
+package es.dabdm.decide;
 
-import static es.dabdm.decide.util.GCM_CommonUtilities.SERVER_URL;
-import static es.dabdm.decide.util.GCM_CommonUtilities.TAG;
-import static es.dabdm.decide.util.GCM_CommonUtilities.displayMessage;
+import static es.dabdm.decide.GCMCommonUtilities.SERVER_URL;
+import static es.dabdm.decide.GCMCommonUtilities.TAG;
+import static es.dabdm.decide.GCMCommonUtilities.displayMessage;
 
 import com.google.android.gcm.GCMRegistrar;
 
@@ -41,7 +41,7 @@ import java.util.Random;
 /**
  * Helper class used to communicate with the demo server.
  */
-public final class GCM_ServerUtilities {
+public final class GCMServerUtilities {
 
     private static final int MAX_ATTEMPTS = 5;
     private static final int BACKOFF_MILLI_SECONDS = 2000;
@@ -69,7 +69,7 @@ public final class GCM_ServerUtilities {
                 post(serverUrl, params);
                 GCMRegistrar.setRegisteredOnServer(context, true);
                 String message = context.getString(R.string.server_registered);
-                GCM_CommonUtilities.displayMessage(context, message);
+                GCMCommonUtilities.displayMessage(context, message);
                 return true;
             } catch (IOException e) {
                 // Here we are simplifying and retrying on any error; in a real
@@ -94,7 +94,7 @@ public final class GCM_ServerUtilities {
         }
         String message = context.getString(R.string.server_register_error,
                 MAX_ATTEMPTS);
-        GCM_CommonUtilities.displayMessage(context, message);
+        GCMCommonUtilities.displayMessage(context, message);
         return false;
     }
 
@@ -110,7 +110,7 @@ public final class GCM_ServerUtilities {
             post(serverUrl, params);
             GCMRegistrar.setRegisteredOnServer(context, false);
             String message = context.getString(R.string.server_unregistered);
-            GCM_CommonUtilities.displayMessage(context, message);
+            GCMCommonUtilities.displayMessage(context, message);
         } catch (IOException e) {
             // At this point the device is unregistered from GCM, but still
             // registered in the server.
@@ -119,7 +119,7 @@ public final class GCM_ServerUtilities {
             // a "NotRegistered" error message and should unregister the device.
             String message = context.getString(R.string.server_unregister_error,
                     e.getMessage());
-            GCM_CommonUtilities.displayMessage(context, message);
+            GCMCommonUtilities.displayMessage(context, message);
         }
     }
 

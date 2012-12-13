@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package es.dabdm.decide.util;
+package es.dabdm.decide;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,7 +22,7 @@ import android.content.Intent;
  * Helper class providing methods and constants common to other classes in the
  * app.
  */
-public final class GCM_CommonUtilities {
+public final class GCMCommonUtilities {
 
     /**
      * Base URL of the Demo Server (such as http://my_host:8080/gcm-demo)

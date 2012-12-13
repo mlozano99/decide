@@ -15,20 +15,16 @@
  */
 package es.dabdm.decide.ui;
 
-import static es.dabdm.decide.util.GCM_CommonUtilities.DISPLAY_MESSAGE_ACTION;
-import static es.dabdm.decide.util.GCM_CommonUtilities.EXTRA_MESSAGE;
-import static es.dabdm.decide.util.GCM_CommonUtilities.SENDER_ID;
-import static es.dabdm.decide.util.GCM_CommonUtilities.SERVER_URL;
+import static es.dabdm.decide.GCMCommonUtilities.DISPLAY_MESSAGE_ACTION;
+import static es.dabdm.decide.GCMCommonUtilities.EXTRA_MESSAGE;
+import static es.dabdm.decide.GCMCommonUtilities.SENDER_ID;
+import static es.dabdm.decide.GCMCommonUtilities.SERVER_URL;
 
 
 import com.google.android.gcm.GCMRegistrar;
 
+import es.dabdm.decide.GCMServerUtilities;
 import es.dabdm.decide.R;
-import es.dabdm.decide.R.id;
-import es.dabdm.decide.R.layout;
-import es.dabdm.decide.R.menu;
-import es.dabdm.decide.R.string;
-import es.dabdm.decide.util.GCM_ServerUtilities;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -82,7 +78,7 @@ public class DemoActivity extends Activity {
 
                     @Override
                     protected Void doInBackground(Void... params) {
-                        boolean registered = GCM_ServerUtilities.register(context, regId);
+                        boolean registered = GCMServerUtilities.register(context, regId);
                         // At this point all attempts to register with the app
                         // server failed, so we need to unregister the device
                         // from GCM - the app will try to register again when

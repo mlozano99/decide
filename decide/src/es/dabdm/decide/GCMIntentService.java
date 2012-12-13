@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package es.dabdm.decide.util;
+package es.dabdm.decide;
 
-import static es.dabdm.decide.util.GCM_CommonUtilities.SENDER_ID;
-import static es.dabdm.decide.util.GCM_CommonUtilities.displayMessage;
+import static es.dabdm.decide.GCMCommonUtilities.SENDER_ID;
+import static es.dabdm.decide.GCMCommonUtilities.displayMessage;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -49,7 +49,7 @@ public class GCMIntentService extends GCMBaseIntentService {
     protected void onRegistered(Context context, String registrationId) {
         Log.i(TAG, "Device registered: regId = " + registrationId);
         displayMessage(context, getString(R.string.gcm_registered));
-        GCM_ServerUtilities.register(context, registrationId);
+        GCMServerUtilities.register(context, registrationId);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class GCMIntentService extends GCMBaseIntentService {
         Log.i(TAG, "Device unregistered");
         displayMessage(context, getString(R.string.gcm_unregistered));
         if (GCMRegistrar.isRegisteredOnServer(context)) {
-            GCM_ServerUtilities.unregister(context, registrationId);
+            GCMServerUtilities.unregister(context, registrationId);
         } else {
             // This callback results from the call to unregister made on
             // ServerUtilities when the registration to the server failed.
