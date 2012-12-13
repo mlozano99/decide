@@ -5,52 +5,43 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="15" />
+        android:targetSdkVersion="16" />
 
+    <permission
+        android:name="es.dabdm.decide.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />    
     
     <uses-permission android:name="android.permission.INTERNET"/>    
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>    
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <!-- GCM requires a Google account. -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
- 
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> 
     <!-- Keeps the processor from sleeping when a message is received. -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    
-        <permission
-        android:name="es.dabdm.decide.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
-    <uses-permission
-        android:name="es.dabdm.decide.permission.C2D_MESSAGE" />
-
+    <uses-permission android:name="android.permission.WAKE_LOCK" />    
+    <uses-permission android:name="es.dabdm.decide.permission.C2D_MESSAGE" />
     <!-- This app has permission to register and receive data message. -->
-    <uses-permission
-        android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
      
-    
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" android:permission="android.permission.ACCESS_FINE_LOCATION">
-        
-        
+               
 		     <activity
-		            android:name="es.dabdm.decide.ui.DemoActivity"
-		            android:label="@string/app_name"
-		            android:screenOrientation="portrait" >
+		            android:name="es.dabdm.decide.ui.MainActivity"
+		            android:label="@string/app_name">		            
 		            <intent-filter>
 		                <action android:name="android.intent.action.MAIN" />
 		
 		                <category android:name="android.intent.category.LAUNCHER" />
 		            </intent-filter>
 		        </activity>
-                
+        <activity android:name="es.dabdm.decide.ui.ComunidadesActivity" />
+        <activity android:name="es.dabdm.decide.ui.ComunidadesDetalleActivity" />
+        <activity android:name="es.dabdm.decide.ui.DemoActivity" />        
         
-        <activity android:name="ComunidesActivity" />
-        
-        
-               <!--
+        <!--
           BroadcastReceiver that will receive intents from GCM
           services and handle them to the custom IntentService.
 

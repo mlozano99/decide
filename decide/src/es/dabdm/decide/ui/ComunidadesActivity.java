@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -21,6 +23,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 
 import com.google.gson.Gson;
@@ -43,26 +46,30 @@ import android.widget.AdapterView;
 
 
 
+import static es.dabdm.decide.util.Repositorio.URLgetComunidades;
+
+
 
 public class ComunidadesActivity extends ListActivity {
 
 	ListView lista;
 	ArrayAdapter<String> adaptador;
-	ArrayList datos;
+	//ArrayList datos;
 	LVA_Comunidades listaAdaptador;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-        setContentView(R.layout.l_listacomunidades);
-		   
+        setContentView(R.layout.l_listacomunidades);		   
        
        String tipoComunidad = "A";//Hay que establecer los códigos posibles
+
        new RecuperarComunidades().execute( tipoComunidad );
         
-	   ListView lista = getListView();
-	 
+       
+       
+	   ListView lista = getListView();	 
 	   lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
@@ -80,15 +87,15 @@ public class ComunidadesActivity extends ListActivity {
 		LVI_generico item = listaAdaptador.getItem(pos);
 		i.putExtra("Comunidad",item.getTitle());		
 		startActivity(i);  
-		this.overridePendingTransition(R.anim.a_entra,R.anim.a_sale); 
-	
-		
+		this.overridePendingTransition(R.anim.a_entra,R.anim.a_sale); 		
 		Log.i( "A:", "onLongListItemClick id=" + id ); 
 		
 	}
 	
 	
 	
+	
+	 
 	 private class RecuperarComunidades extends AsyncTask<String, ListaComunidades, Boolean> {
 	    	
 	    	@Override
@@ -105,10 +112,11 @@ public class ComunidadesActivity extends ListActivity {
         		HttpGet request = null;
         		List<NameValuePair> pares = new ArrayList<NameValuePair>();
         		pares.add(new BasicNameValuePair("tipo", params[0])); // Parametro tipo de comunidad
-   
+        		
+        		
 				try {
 					
-					request = new HttpGet("http://158.42.252.238:8081/servidorDecide/rest/comunidades?" + URLEncodedUtils.format(pares, "utf-8"));
+					request = new HttpGet(URLgetComunidades); // + URLEncodedUtils.format(pares, "utf-8"));
 					response = client.execute(request);
 					entity = response.getEntity();
 					
@@ -148,13 +156,15 @@ public class ComunidadesActivity extends ListActivity {
 
 	    		ArrayList<LVI_generico> items = new ArrayList<LVI_generico>();
 	    		for(Comunidad c : comunidades[0].getComunidades()){
-	    		    items.add(new LVI_generico(c.getNombre()));    // JOSE ESTO NO LO VEO CLARO, COMO QUE TIENES UNA LISTA DE VALORES SIN SU CÓDIGO ÚNICO?? 
+	    		    items.add(new LVI_generico(c.getNombre()));     
 	    		}
 	    		
 	    		listaAdaptador = new LVA_Comunidades(ComunidadesActivity.this, R.layout.l_list_item, items); 
 	    		setListAdapter(listaAdaptador);	 
+	    		
 	    		super.onProgressUpdate(comunidades);
 	    		Thread.currentThread().interrupt();
 	    	}
 	    }
+
 }
