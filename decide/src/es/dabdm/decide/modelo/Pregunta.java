@@ -1,6 +1,7 @@
 package es.dabdm.decide.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 
@@ -14,6 +15,8 @@ public class Pregunta implements Serializable{
 
 	private String texto;
     
+	private Date fechaLimite;
+	
 	private List<RespuestaPosible> respuestasPosibles;
 
 	public Pregunta() {
@@ -50,6 +53,14 @@ public class Pregunta implements Serializable{
 		this.texto = texto;
 	}
 
+	public Date getFechaLimite() {
+		return fechaLimite;
+	}
+
+	public void setFechaLimite(Date fechaLimite) {
+		this.fechaLimite = fechaLimite;
+	}
+
 	public List<RespuestaPosible> getRespuestasPosibles() {
 		return respuestasPosibles;
 	}
@@ -57,5 +68,6 @@ public class Pregunta implements Serializable{
 	public void setRespuestasPosibles(List<RespuestaPosible> respuestasPosibles) {
 		this.respuestasPosibles = respuestasPosibles;
 	}
+
 
 }
