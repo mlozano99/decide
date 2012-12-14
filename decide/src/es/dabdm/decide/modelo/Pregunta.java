@@ -3,32 +3,43 @@ package es.dabdm.decide.modelo;
 import java.io.Serializable;
 import java.util.List;
 
+
 public class Pregunta implements Serializable{
 
-	private static final long serialVersionUID = 2974432651255159694L;
+	private static final long serialVersionUID = 8974664891175454462L;
 
-	private Encuesta encuesta;
-
-	private Comunidad comunidad;
+	private Integer idPregunta;
 	
+	private Integer idComunidad;
+
 	private String texto;
-
+    
 	private List<RespuestaPosible> respuestasPosibles;
+
+	public Pregunta() {
+	}
 	
-	public Encuesta getEncuesta() {
-		return encuesta;
+	public Pregunta(Integer idPregunta, Integer idComunidad, String texto) {
+		super();
+		this.idPregunta = idPregunta;
+		this.idComunidad = idComunidad;
+		this.texto = texto;
 	}
 
-	public void setEncuesta(Encuesta encuesta) {
-		this.encuesta = encuesta;
+	public Integer getIdPregunta() {
+		return idPregunta;
 	}
 
-	public Comunidad getComunidad() {
-		return comunidad;
+	public void setIdPregunta(Integer idPregunta) {
+		this.idPregunta = idPregunta;
 	}
 
-	public void setComunidad(Comunidad comunidad) {
-		this.comunidad = comunidad;
+	public Integer getIdComunidad() {
+		return idComunidad;
+	}
+
+	public void setIdComunidad(Integer idComunidad) {
+		this.idComunidad = idComunidad;
 	}
 
 	public String getTexto() {
@@ -46,6 +57,5 @@ public class Pregunta implements Serializable{
 	public void setRespuestasPosibles(List<RespuestaPosible> respuestasPosibles) {
 		this.respuestasPosibles = respuestasPosibles;
 	}
-	
-	
+
 }

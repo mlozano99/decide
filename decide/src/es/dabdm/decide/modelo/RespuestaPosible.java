@@ -2,20 +2,30 @@ package es.dabdm.decide.modelo;
 
 import java.io.Serializable;
 
+
 public class RespuestaPosible implements Serializable{
 
-	private static final long serialVersionUID = 4876897886769836373L;
-	
-	private Pregunta pregunta;
+	private static final long serialVersionUID = -5355438869956833903L;
 
-    private String valor;
+	private Integer idRespuestaPosible;
 	
-	public Pregunta getPregunta() {
-		return pregunta;
+    private String valor;
+
+    public RespuestaPosible() {
+	}
+    
+	public RespuestaPosible(Integer idRespuestaPosible, String valor) {
+		super();
+		this.idRespuestaPosible = idRespuestaPosible;
+		this.valor = valor;
 	}
 
-	public void setPregunta(Pregunta pregunta) {
-		this.pregunta = pregunta;
+	public Integer getIdRespuestaPosible() {
+		return idRespuestaPosible;
+	}
+
+	public void setIdRespuestaPosible(Integer idRespuestaPosible) {
+		this.idRespuestaPosible = idRespuestaPosible;
 	}
 
 	public String getValor() {
@@ -26,4 +36,5 @@ public class RespuestaPosible implements Serializable{
 		this.valor = valor;
 	}
 	
+  
 }

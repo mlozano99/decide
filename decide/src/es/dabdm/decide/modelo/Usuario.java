@@ -23,9 +23,6 @@ public class Usuario implements Serializable{
 	
 	private String publicidad;
 
-	private List<RespuestaUsuario> respuestas;
-	
-	private List<Suscripcion> suscripciones;
 	
 	public String getNombre() {
 		return nombre;
@@ -57,22 +54,6 @@ public class Usuario implements Serializable{
 
 	public void setPublicidad(String publicidad) {
 		this.publicidad = publicidad;
-	}
-
-	public List<RespuestaUsuario> getRespuestas() {
-		return respuestas;
-	}
-
-	public void setRespuestas(List<RespuestaUsuario> respuestas) {
-		this.respuestas = respuestas;
-	}
-
-	public List<Suscripcion> getSuscripciones() {
-		return suscripciones;
-	}
-
-	public void setSuscripciones(List<Suscripcion> suscripciones) {
-		this.suscripciones = suscripciones;
 	}
 
 	public String getIdRegistration() {
