@@ -3,7 +3,6 @@ package es.dabdm.decide.util;
 import java.util.ArrayList;
 
 import es.dabdm.decide.R;
-import es.dabdm.decide.R.id;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

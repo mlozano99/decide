@@ -10,7 +10,7 @@ import android.view.Menu;
 
 public class BaseActivity extends Activity {
 	
-	private static final String DEBUG_TAG = "Depurando en: ";	
+	public static final String DEBUG_TAG = "Depurando en: ";	
 	private java.util.Random r;
 	private int id_log;
 

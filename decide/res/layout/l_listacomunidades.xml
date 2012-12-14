@@ -4,7 +4,15 @@
         android:layout_height="fill_parent" >
 
         <TextView
-            android:id="@+id/textTituloLComunidades"
+	        android:id="@+id/tv_LComunidades"
+	        style="@style/Titulo_pagina"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/titulo_lista_comu"
+	        android:textSize="30sp" />
+        <!-- 
+        <TextView
+            android:id="@+id/tv_LComunidades"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"            
@@ -12,14 +20,15 @@
             android:layout_centerVertical="false"
             android:textSize="20sp"
             android:text="@string/titulo_lista_comu" />
-
+		 -->
+		
         <ListView
             android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:listSelector="@drawable/list_selector"
-            android:layout_below="@+id/textTituloLComunidades"            
-            android:focusable="true" >
+            android:layout_below="@id/tv_LComunidades"
+            android:focusable="true"
+            android:listSelector="@drawable/list_selector" >
             
         </ListView>
         

@@ -25,14 +25,16 @@ public class Comunidad implements Serializable {
 
 	private ComunityManager gestor;
 	
-
+    private String suscrito;
+    
+	
     public Comunidad() {
 	}
     
     
     
 	public Comunidad(String nombre, String twitter, PosicionGPS gps,
-			String alcance, String tipo, Integer radio, ComunityManager gestor) {
+			String alcance, String tipo, Integer radio, ComunityManager gestor,String suscrito) {
 		super();
 		this.nombre = nombre;
 		this.twitter = twitter;
@@ -110,6 +112,19 @@ public class Comunidad implements Serializable {
 		this.idComunidad = idComunidad;
 	}
 
-	
+
+
+	public String getSuscrito() {
+		return suscrito;
+	}
+
+
+
+	public void setSuscrito(String suscrito) {
+		this.suscrito = suscrito;
+	}
+
+
+
 	
 }

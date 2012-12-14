@@ -7,8 +7,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 
@@ -69,7 +67,7 @@ public class ComunidadesActivity extends ListActivity {
         
        
        
-	   ListView lista = getListView();	 
+	   ListView lista = getListView();
 	   lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
@@ -87,8 +85,9 @@ public class ComunidadesActivity extends ListActivity {
 		LVI_generico item = listaAdaptador.getItem(pos);
 		i.putExtra("Comunidad",item.getTitle());		
 		startActivity(i);  
+		
 		this.overridePendingTransition(R.anim.a_entra,R.anim.a_sale); 		
-		Log.i( "A:", "onLongListItemClick id=" + id ); 
+		Log.i( BaseActivity.DEBUG_TAG, "onLongListItemClick id=" + id ); 
 		
 	}
 	
