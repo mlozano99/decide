@@ -27,10 +27,13 @@ import android.util.Log;
 
 import com.google.android.gcm.GCMBaseIntentService;
 import com.google.android.gcm.GCMRegistrar;
+import com.google.gson.Gson;
 
 import es.dabdm.decide.R;
 import es.dabdm.decide.R.drawable;
 import es.dabdm.decide.R.string;
+import es.dabdm.decide.modelo.Pregunta;
+import es.dabdm.decide.modelo.RespuestaPosible;
 import es.dabdm.decide.ui.DemoActivity;
 
 /**
@@ -69,6 +72,16 @@ public class GCMIntentService extends GCMBaseIntentService {
     protected void onMessage(Context context, Intent intent) {
         Log.i(TAG, "Received message");
         String message = getString(R.string.gcm_message);
+        
+        Object datosPregunta = intent.getExtras().get("pregunta");
+        if(datosPregunta!=null && datosPregunta instanceof String){
+	        Gson gson = new Gson();
+	        Pregunta pregunta = gson.fromJson((String) datosPregunta,Pregunta.class);
+	        message = pregunta.getTexto();
+	        for(RespuestaPosible r : pregunta.getRespuestasPosibles()){
+	        	message  =message + "\n" + r.getValor();
+	        }
+        }
         displayMessage(context, message);
         // notifies user
         generateNotification(context, message);
@@ -110,10 +123,8 @@ public class GCMIntentService extends GCMBaseIntentService {
         String title = context.getString(R.string.app_name);
         Intent notificationIntent = new Intent(context, DemoActivity.class);
         // set intent so it does not start a new activity
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent intent =
-                PendingIntent.getActivity(context, 0, notificationIntent, 0);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent intent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
         notification.setLatestEventInfo(context, title, message, intent);
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
         notificationManager.notify(0, notification);
