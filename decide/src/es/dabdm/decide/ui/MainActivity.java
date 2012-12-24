@@ -77,6 +77,11 @@ public class MainActivity extends BaseActivity {
         return true;
     }
     
+    
+	public void onClickPruebaServicios(View v){
+		 startActivity (new Intent (this, PruebaServiciosActivity.class));
+	}  
+    
 }
 
 

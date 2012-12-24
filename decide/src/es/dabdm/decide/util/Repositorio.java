@@ -8,69 +8,57 @@ public final class Repositorio {
 	public static final String URLBASE = "http://158.42.252.238:8081/servidorDecide/rest/";
 	
 
-	/* GET
-	 * Lista de comunidades. 
-	 * Parámetros: 
-	 * Tipo: tipo de comunidad
-	 * usuario: email de usuario
-	 * En esta petición nos dará si la comunidad está suscrita para ese usuario
+	/* 	
+	 *   @GET
+	 *  	public ListaComunidades getComunidades(String email,String tipo,String latitud,String longitud)
+	 *       
+	 *      - Lista de comunidades, funciona de varias formas este método:
+              -  Si se envia con latitud y longitud <> 0 -> entonces envia las que estan cerca del usuario (¿por tipo tmb?
+              -  Si se envia con  latitud=longitud=0     -> entonces se envia las que ha consultado por un tipo (todas las que cumplan la consulta, este o no suscrito)
+
+           ¿ En cualquier caso email y tipo son obligatorios (verificar este punto....) ?
 	 * */
-	public static final String URLgetComunidades = URLBASE + "comunidades";
+	public static final String URLcomunidades = URLBASE + "comunidades";
+	
 	
 
-	/* PUT
-	 * Petición de un usuario para suscribirse */
-	/* Parámetros:
-	 * email: 
-	 * id_comunidad:
-	 */
-	public static final String URLsuscribir = "URLBASE" + "suscribir";
-	
-	
-	/* DELETE
-	 * Petición de un usuario para desuscribirse */
-	/* Parámetros:
-	 * email: 
-	 * id_comunidad:
-	 */	
-	public static final String URLdesuscribir = "URLBASE" + "desuscribir";	
-	
-	
-	/* POST
-	 * Usuario guardar una preguenta */
-	/* Parámetros:
-	 * usuario: -email del usuario 
-	 * id_pregunta:
-	 * respuesta
-	 */	
-	public static final String URLguardarpregunta = "URLBASE" + "guardarpregunta";
-	
-	
-	
-	/* POST
-	 * Usuario pide una preguenta a partir de un id que le llega en la notificación
-	 * Esto se hará si es necesario */
-	/* Parámetros:
-	 * usuario: -email del usuario 
-	 * id_pregunta:
-	 * 
-	 */	
-	public static final String URLleerpregunta = "URLBASE" + "leerpregunta";
+	/*  Se usa el mismo punto, lo único que cambia es el método de la petición que tiene diferentes significados
+	 *  @DELETE
+         public void deSuscribirUsusarioComunidad( String email, Integer idComunidad) --> Desuscribir de una comunidad
+                   
+	   @PUT
+	     public void suscribirUsusarioComunidad(String email, Integer idComunidad)  -> Suscribir de una comunidad
 
+	   @GET
+	     public ListaComunidades getComunidadesSuscritas( String email) -> Lista de comunidades suscritas
+
+
+	*/
+	public static final String URLsuscripciones = URLBASE + "suscripciones";
+	
+	
+
+	/* 
+         @PUT
+	       public void responderPregunta(Integer idPregunta,String email, Integer idRespuesta) --> El usuario responde una pregunta 
+	 */	
+	public static final String URLpreguntas = URLBASE + "preguntas";
+	
+	
 		
-	/* PUT
-	 * Usuario envía posición GPS */
-	/* Parámetros:
-	 * longitud: 
-	 * latitud:
-	 * usuario: -email del usuario
+	/*@PUT
+	     public void posicionUsuario(  double longitud,  double latitud, String email)  -> Para enviar la posición del usuario
 	 */
-	public static final String URLposicion = "URLBASE" + "posicion";
+	public static final String URLposicion = URLBASE + "posicion";
 	
-	
-	
-	
-	
+	/*
+	  @PUT	  
+	       public void altaUsuario(Usuario usuario) -> Se da de alta un usuario, hay que convertirlo primero como JSON
+	    
+       @GET
+           public Usuario getUsuario(String email) --> Recupera todos los datos del usuario en el servidor (se reciben en formato JSON)	    
+	*/
+	public static final String URLusuarios = URLBASE + "usuarios";
 	
 	
 }

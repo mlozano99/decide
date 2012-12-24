@@ -40,7 +40,10 @@
 		        </activity>
         <activity android:name="es.dabdm.decide.ui.ComunidadesActivity" />
         <activity android:name="es.dabdm.decide.ui.ComunidadesDetalleActivity" />
-        <activity android:name="es.dabdm.decide.ui.DemoActivity" />        
+        <activity android:name="es.dabdm.decide.ui.DemoActivity" />
+        
+        <!-- Manolo: borrarla cuando ya esten implementados las petticiones al servidor .-->
+        <activity android:name="es.dabdm.decide.ui.PruebaServiciosActivity" />           
         
         <!--
           BroadcastReceiver that will receive intents from GCM

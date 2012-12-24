@@ -21,4 +21,14 @@
         android:layout_centerVertical="true"
         android:text="@string/titulo_Test_GCM" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/b_gcm"
+        android:layout_below="@+id/b_gcm"
+        android:layout_marginTop="48dp"
+        android:onClick="onClickPruebaServicios"
+        android:text="Prueba Servicios" />
+
 </RelativeLayout>

@@ -44,7 +44,7 @@ import android.widget.AdapterView;
 
 
 
-import static es.dabdm.decide.util.Repositorio.URLgetComunidades;
+import static es.dabdm.decide.util.Repositorio.URLcomunidades;
 
 
 
@@ -115,7 +115,7 @@ public class ComunidadesActivity extends ListActivity {
         		
 				try {
 					
-					request = new HttpGet(URLgetComunidades); // + URLEncodedUtils.format(pares, "utf-8"));
+					request = new HttpGet(URLcomunidades); // + URLEncodedUtils.format(pares, "utf-8"));
 					response = client.execute(request);
 					entity = response.getEntity();
 					
