@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_x="18dp"
         android:layout_y="70dp"
+        android:onClick="onClickEnviarAltaUsuario"
         android:text="Alta Usuario" />
 
     <Button

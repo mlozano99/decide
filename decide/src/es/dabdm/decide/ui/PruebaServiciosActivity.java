@@ -92,7 +92,7 @@ public class PruebaServiciosActivity extends BaseActivity {
 					
 					android.util.Log.i("RecuperarComunidades","Peticion a " + Repositorio.URLcomunidades);
 					
-					request = new HttpGet(Repositorio.URLcomunidades + URLEncodedUtils.format(pares, "utf-8")); 
+					request = new HttpGet(Repositorio.URLcomunidades + "?" + URLEncodedUtils.format(pares, "utf-8")); 
 					response = client.execute(request);
 					entity = response.getEntity();
 					
@@ -169,7 +169,7 @@ public class PruebaServiciosActivity extends BaseActivity {
 					
 					android.util.Log.i("RecuperarComunidades","Peticion a " + Repositorio.URLsuscripciones);
 					
-					request = new HttpGet(Repositorio.URLcomunidades + URLEncodedUtils.format(pares, "utf-8")); 
+					request = new HttpGet(Repositorio.URLcomunidades  + "?" +  URLEncodedUtils.format(pares, "utf-8")); 
 					response = client.execute(request);
 					entity = response.getEntity();
 					
@@ -380,7 +380,7 @@ public class PruebaServiciosActivity extends BaseActivity {
 				try {
 // Hay que probar si funciona correctamente esto!!!!!!!!!!!!!!!!!!!
 					android.util.Log.i("EnviarDesuscripcionUsuarioComunidad","Peticion a " + Repositorio.URLsuscripciones);					
-					request = new HttpDelete(Repositorio.URLsuscripciones + URLEncodedUtils.format(pares, "utf-8"));
+					request = new HttpDelete(Repositorio.URLsuscripciones  + "?" + URLEncodedUtils.format(pares, "utf-8"));
 							
 					client.execute(request); // No hace falta el response... no hay respuesta a esta peticion desde el servidor				
 					publishProgress();
@@ -426,7 +426,7 @@ public class PruebaServiciosActivity extends BaseActivity {
 					
 					android.util.Log.i("RecuperarDatosUsuario","Peticion a " + Repositorio.URLusuarios);
 					
-					request = new HttpGet(Repositorio.URLusuarios + URLEncodedUtils.format(pares, "utf-8")); 
+					request = new HttpGet(Repositorio.URLusuarios + "?" + URLEncodedUtils.format(pares, "utf-8")); 
 					response = client.execute(request);
 					entity = response.getEntity();
 					
