@@ -58,8 +58,7 @@ public class DemoActivity extends Activity {
         GCMRegistrar.checkManifest(this);
         setContentView(R.layout.main);
         mDisplay = (TextView) findViewById(R.id.display);
-        registerReceiver(mHandleMessageReceiver,
-                new IntentFilter(DISPLAY_MESSAGE_ACTION));
+        registerReceiver(mHandleMessageReceiver,new IntentFilter(DISPLAY_MESSAGE_ACTION));
         final String regId = GCMRegistrar.getRegistrationId(this);
         if (regId.equals("")) {
             // Automatically registers application on startup.

@@ -33,17 +33,19 @@
 		            android:name="es.dabdm.decide.ui.MainActivity"
 		            android:label="@string/app_name">		            
 		            <intent-filter>
-		                <action android:name="android.intent.action.MAIN" />
-		
+		                <action android:name="android.intent.action.MAIN" />		
 		                <category android:name="android.intent.category.LAUNCHER" />
 		            </intent-filter>
 		        </activity>
+		        
         <activity android:name="es.dabdm.decide.ui.ComunidadesActivity" />
         <activity android:name="es.dabdm.decide.ui.ComunidadesDetalleActivity" />
-        <activity android:name="es.dabdm.decide.ui.DemoActivity" />
+        <activity android:name="es.dabdm.decide.ui.PreguntasDetalleActivity" />
         
-        <!-- Manolo: borrarla cuando ya esten implementados las petticiones al servidor .-->
+        
+        <!-- Manolo: borrarlas cuando ya esten implementados las peticiones al servidor y el GCM.-->
         <activity android:name="es.dabdm.decide.ui.PruebaServiciosActivity" />           
+        <activity android:name="es.dabdm.decide.ui.DemoActivity" />
         
         <!--
           BroadcastReceiver that will receive intents from GCM
