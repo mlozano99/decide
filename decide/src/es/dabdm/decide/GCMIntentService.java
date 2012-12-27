@@ -38,6 +38,7 @@ import com.google.gson.GsonBuilder;
 import es.dabdm.decide.modelo.Pregunta;
 import es.dabdm.decide.modelo.RespuestaPosible;
 import es.dabdm.decide.ui.DemoActivity;
+import es.dabdm.decide.ui.PreguntasDetalleActivity;
 import es.dabdm.decide.util.MyHelperBBDD;
 
 /**
@@ -76,25 +77,24 @@ public class GCMIntentService extends GCMBaseIntentService {
     @Override
     protected void onMessage(Context context, Intent intent) {
         Log.i(TAG, "Received message");
-        String message = getString(R.string.gcm_message);
+       // String message = getString(R.string.gcm_message);
         
         Object datosPregunta = intent.getExtras().get("pregunta");
         if(datosPregunta!=null && datosPregunta instanceof String){
 
 	        Gson gson = new GsonBuilder().setDateFormat(MyHelperBBDD.FORMATO_FECHA).create();	
 	        Pregunta pregunta = gson.fromJson((String) datosPregunta,Pregunta.class);
-	        /*message = pregunta.getTexto();
-	        for(RespuestaPosible r : pregunta.getRespuestasPosibles()){
-	        	message  =message + "\n" + r.getValor();
-	        }*/
+	     
 	        //Guarda el ID de la pregunta notificada en las preferencias 
 	        saveData(pregunta.getIdPregunta());
 	        //Guarda los datos de la pregunta en BBDD
 	        guardarPreguntaBBDD(pregunta);
+        
+            displayMessage(context, pregunta.getTexto() );
+            generateNotification(context, pregunta.getTexto(),pregunta.getIdPregunta());   
         }
-        displayMessage(context, message);
-        // notifies user
-        generateNotification(context, message);
+        //displayMessage(context, message);
+       // generateNotification(context, message);
     }
 
     
@@ -105,7 +105,7 @@ public class GCMIntentService extends GCMBaseIntentService {
         String message = getString(R.string.gcm_deleted, total);
         displayMessage(context, message);
         // notifies user
-        generateNotification(context, message);
+        generateNotification(context, message,-1);
     }
 
     @Override
@@ -126,17 +126,21 @@ public class GCMIntentService extends GCMBaseIntentService {
     /**
      * Issues a notification to inform the user that server has sent a message.
      */
-    private static void generateNotification(Context context, String message) {
+    private static void generateNotification(Context context, String message,Integer idPregunta) {
       
     	int icon = R.drawable.ic_stat_gcm;
         long when = System.currentTimeMillis();
-        NotificationManager notificationManager = (NotificationManager)
-                context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        
+        
         Notification notification = new Notification(icon, message, when);
         String title = context.getString(R.string.app_name);
-        Intent notificationIntent = new Intent(context, DemoActivity.class);
+        Intent notificationIntent = new Intent(context, PreguntasDetalleActivity.class);
+        notificationIntent.putExtra("idPregunta", idPregunta);
+        
         // set intent so it does not start a new activity
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        
         PendingIntent intent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
         notification.setLatestEventInfo(context, title, message, intent);
         notification.flags |= Notification.FLAG_AUTO_CANCEL;

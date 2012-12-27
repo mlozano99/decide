@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -54,21 +55,27 @@ public class PreguntasDetalleActivity extends BaseActivity {
 	    public void onCreate(Bundle savedInstanceState) {	      
 	    	super.onCreate(savedInstanceState);
 	    	setContentView(R.layout.preguntasdetalle);
-	    		    	
+             
+	    	
+	    	Bundle bundle = getIntent().getExtras();
+            if(bundle!=null){	    	 
+	    	    this.idPregunta = bundle.getInt("idPregunta");
+            }else{
+            	this.idPregunta = obtienePreguntaUltimaNoficacion();
+            }
+            
 	    	this.myHelperBBDD = new MyHelperBBDD(this);
-	    	
-	    	this.idPregunta = obtienePreguntaUltimaNoficacion();	    	
-	    	if(this.idPregunta.equals(-1)){
-	    		
-	    	}
-	    	
+
+	        Pregunta pregunta = cargaPregunta(this.idPregunta);
+	        EditText textoPregunta = (EditText) findViewById(R.id.textoPregunta);
+	        textoPregunta.setText(pregunta.getTexto());
 	    	cargaRespuestasPregunta(this.idPregunta);
 	    	
 	    }
 	    
 		public Cursor getRespuestas(Integer idPregunta){
 	    	SQLiteDatabase db = this.myHelperBBDD.getReadableDatabase();
-	    	Cursor cursor = db.rawQuery("SELECT idRespuestaPosible,valor FROM respuestas WHERE idPregunta = "+ idPregunta +"ORDER BY idRespuestaPosible", null);
+	    	Cursor cursor = db.rawQuery("SELECT idRespuestaPosible,valor FROM respuestas WHERE idPregunta = "+ idPregunta +" ORDER BY idRespuestaPosible", null);
 	    	startManagingCursor(cursor);
 	    	return cursor;
 	    }	    
@@ -107,12 +114,12 @@ public class PreguntasDetalleActivity extends BaseActivity {
 
 	            // Columna idRespuestaPosible
 	            texto = new TextView(this);
-	            texto.setText(  Integer.toString( cursor.getInt(1) ));
+	            texto.setText(  Integer.toString( cursor.getInt(0) ));
 	            fila.addView(texto);	            
 	            
 	            // Columna valor
 	            texto = new TextView(this);
-	            texto.setText( cursor.getString(2));
+	            texto.setText( cursor.getString(1));
 	            fila.addView(texto);
             
 	            //Aade la fila

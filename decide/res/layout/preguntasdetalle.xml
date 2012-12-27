@@ -3,33 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+      
+
 
     <EditText
         android:id="@+id/textoPregunta"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="18dp"
+        android:layout_height="wrap_content"      
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textMultiLine" >
 
         <requestFocus />
-         
     </EditText>
-      
-    <TableLayout 
-		    android:id="@+id/tablaRespuestas"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content">    
-		    
-		    <TableRow
-		        android:id="@+id/filaRespuesta"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content" >
-		    </TableRow>
-		
-   </TableLayout>		
     
+    <TableLayout
+         android:id="@+id/tablaRespuestas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textoPregunta"
+        android:layout_below="@+id/textoPregunta"
+        android:layout_marginTop="46dp" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+    </TableLayout>
+   
 </RelativeLayout>
