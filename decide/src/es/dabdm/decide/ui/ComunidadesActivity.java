@@ -180,7 +180,7 @@ public class ComunidadesActivity extends ListActivity {
 		protected void onPostExecute(ListaComunidades comunidades) {
 			// TODO Auto-generated method stub
  
-			if (comunidades!=null | (!comunidades.getComunidades().isEmpty())) {
+			if (comunidades!=null) { // || (!comunidades.getComunidades().isEmpty())) {
 				lista_comunidades=comunidades;
 				
 				ArrayList<LVI_generico> items = new ArrayList<LVI_generico>();

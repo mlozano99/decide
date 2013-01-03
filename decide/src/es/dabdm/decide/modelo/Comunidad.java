@@ -45,6 +45,7 @@ public class Comunidad implements Serializable {
 		this.tipo = tipo;
 		this.radio = radio;
 		this.gestor = gestor;
+		this.suscrito=suscrito;
 		this.descripcion = descripcion;
 	}
 
