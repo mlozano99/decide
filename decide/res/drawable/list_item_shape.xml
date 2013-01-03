@@ -7,7 +7,8 @@
     <gradient android:startColor="#238798" android:centerColor="#74e0f1" android:endColor="#62bdcb"
 		android:angle="90"/>
     
-    <corners android:bottomRightRadius="5dp" android:bottomLeftRadius="5dp"
-		android:topLeftRadius="5dp" android:topRightRadius="5dp"/>
+    <!--<corners android:bottomRightRadius="5dp" android:bottomLeftRadius="5dp"
+		android:topLeftRadius="5dp" android:topRightRadius="5dp"/> 
+	-->
     
 </shape>

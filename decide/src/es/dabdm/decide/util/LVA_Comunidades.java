@@ -15,6 +15,7 @@ public class LVA_Comunidades extends ArrayAdapter<LVI_generico> {
 
     private ArrayList<LVI_generico> items;
     private Context contexto;
+    
     static class ViewHolder {
         TextView title;
     }
@@ -52,7 +53,10 @@ public class LVA_Comunidades extends ArrayAdapter<LVI_generico> {
         
         return convertView;
     }
-    
+
+
+	
+	
     
     
     

@@ -27,6 +27,8 @@ public class Comunidad implements Serializable {
 	
     private String suscrito;
     
+    private String descripcion;
+    
 	
     public Comunidad() {
 	}
@@ -34,7 +36,7 @@ public class Comunidad implements Serializable {
     
     
 	public Comunidad(String nombre, String twitter, PosicionGPS gps,
-			String alcance, String tipo, Integer radio, ComunityManager gestor,String suscrito) {
+			String alcance, String tipo, Integer radio, ComunityManager gestor,String suscrito,String descripcion) {
 		super();
 		this.nombre = nombre;
 		this.twitter = twitter;
@@ -43,6 +45,7 @@ public class Comunidad implements Serializable {
 		this.tipo = tipo;
 		this.radio = radio;
 		this.gestor = gestor;
+		this.descripcion = descripcion;
 	}
 
 
@@ -122,6 +125,18 @@ public class Comunidad implements Serializable {
 
 	public void setSuscrito(String suscrito) {
 		this.suscrito = suscrito;
+	}
+
+
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 

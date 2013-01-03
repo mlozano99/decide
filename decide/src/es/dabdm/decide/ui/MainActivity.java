@@ -8,6 +8,7 @@ import es.dabdm.decide.R.id;
 import es.dabdm.decide.R.layout;
 import es.dabdm.decide.R.menu;
 import es.dabdm.decide.util.G_GPS;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -34,7 +35,8 @@ public class MainActivity extends BaseActivity {
 	    Button b1 = (Button) findViewById(R.id.b_comu);
 	    b1.setOnClickListener(new View.OnClickListener() 
 		{
-			@Override
+			
+	    	@Override
 			public void onClick(View v) 
 			{
 				startActivity(
