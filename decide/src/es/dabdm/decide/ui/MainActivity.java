@@ -1,14 +1,10 @@
 package es.dabdm.decide.ui;
 
-
-
-
 import es.dabdm.decide.R;
 import es.dabdm.decide.R.id;
 import es.dabdm.decide.R.layout;
 import es.dabdm.decide.R.menu;
 import es.dabdm.decide.util.G_GPS;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
