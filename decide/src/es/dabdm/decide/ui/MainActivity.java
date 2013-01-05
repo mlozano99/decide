@@ -56,11 +56,22 @@ public class MainActivity extends BaseActivity {
 			}	
 		});
 	    
+	    Button b4 = (Button) findViewById(R.id.b_buenta);
+	    b4.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(
+					new Intent(MainActivity.this,CuentaActivity.class));
+			
+			}
+		});
 	    
-	    
-	    
-    }
+    }//Fin oncreate
 
+	
+	
     @Override
     protected void onResume() {
       super.onResume();

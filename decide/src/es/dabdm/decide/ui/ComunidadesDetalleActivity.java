@@ -83,7 +83,7 @@ public class ComunidadesDetalleActivity extends BaseActivity {
 	/* **************************************************************** */
     /* PUT con una suscripcion del usuario en una comunidad				*/   
 	/* **************************************************************** */
-	private class EnviarSuscripcionUsuarioComunidad extends AsyncTask<Object, Void, String> {
+	private class EnviarSuscripcionUsuarioComunidad extends AsyncTask<Object, Void, Object[]> {
     	
     	@Override
     	protected void onPreExecute() {    
@@ -91,7 +91,7 @@ public class ComunidadesDetalleActivity extends BaseActivity {
     	}
 
     	@Override
-    	protected String doInBackground(Object...params) {
+    	protected Object[] doInBackground(Object...params) {
             		
     		HttpClient client = new DefaultHttpClient();
     		HttpPut request = null;
@@ -113,11 +113,22 @@ public class ComunidadesDetalleActivity extends BaseActivity {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-			return email;
+			return params;
     	}
     	
+
+    	@Override
+		protected void onPostExecute(Object[] result) {
+			// TODO Auto-generated method stub
+
+    		String email = result[0].toString();
+    		
+    		Toast.makeText(getApplicationContext(),"Suscripción realizada para " + email,Toast.LENGTH_SHORT).show();
+    		super.onPostExecute(result);
+		}
     	
     	
+    	/*
     	@Override
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
@@ -125,8 +136,7 @@ public class ComunidadesDetalleActivity extends BaseActivity {
     		
     		Toast.makeText(getApplicationContext(),"Suscripción realizada para " + result,Toast.LENGTH_SHORT).show();
     		super.onPostExecute(result);
-		}
-
+		}*/
       	
 	}
 

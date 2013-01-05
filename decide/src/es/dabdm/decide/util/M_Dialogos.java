@@ -1,11 +1,24 @@
 package es.dabdm.decide.util;
 
 import es.dabdm.decide.R;
+import es.dabdm.decide.ui.CuentaActivity;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
+import android.os.Bundle;
 import android.provider.Settings;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 
 
 /* Clase para mostrar diálogos 
@@ -57,5 +70,24 @@ public class M_Dialogos {
 		alertDialog.show();
 	}
 	    		
+
+	public void showRegistro()
+	{
+		final Activity mi_acti = (Activity) this.contexto;
+		
+		LayoutInflater inflater = (LayoutInflater) mi_acti.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View dialogo = inflater.inflate(R.layout.l_usuario, (ViewGroup) mi_acti.getCurrentFocus());
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this.contexto);			
+		builder.setView(dialogo);		
+		builder.show();		
+		
+	}
+
+
+
+
+	
+	
 	
 }

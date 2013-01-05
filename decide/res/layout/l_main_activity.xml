@@ -3,32 +3,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/b_comu"
+    <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="103dp"
-        android:text="@string/titulo_lista_comu" />
+        android:layout_marginLeft="40dp" >
 
-    <Button
-        android:id="@+id/b_gcm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/b_comu"
-        android:layout_alignRight="@+id/b_comu"
-        android:layout_centerVertical="true"
-        android:text="@string/titulo_Test_GCM" />
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/b_gcm"
-        android:layout_below="@+id/b_gcm"
-        android:layout_marginTop="48dp"
-        android:onClick="onClickPruebaServicios"
-        android:text="Prueba Servicios" />
+            <Button
+                android:id="@+id/b_comu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="103dp"
+                android:text="@string/titulo_lista_comu" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/b_gcm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/titulo_Test_GCM" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/b_buenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_cuenta" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:onClick="onClickPruebaServicios"
+                android:text="Prueba Servicios" />
+
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>

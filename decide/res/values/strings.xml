@@ -24,14 +24,31 @@
     
     <string name="titulo_Test_GCM">Test de GCM</string>
     
+    
+    <!--  l_detallecomunidad -->
     <string name="bt_suscribir">Suscribir a la comunidad</string>
     <string name="bt_desuscribir">Quitar suscripcion</string>
     
     
+    <!--  l_cuenta --> 
+    <string name="bt_cuenta">Ver cuenta</string>
+    <string name="tx_registrarse">Para poder suscribirte a la lista de comunidades debes estar registrado en DECIDE. </string>
+    <string name="bt_registrarse">Date de alta en la aplicación</string>
+    <string name="bt_iniciar_sesion">Iniciar sesión</string>
+ 
+
     
+    <!--  l_usuario -->
+    <string name="tx_usuario">Texto de pantalla de usuario</string> 
+    <string name="tx_alta_usuario">Alta de usuario</string>
+    <string name="bt_alta_usuario">Alta de usuario</string>
     
+    <string name="txNombre">Nombre</string>
+    <string name="txApellidos">Apellidos</string>
+    <string name="txEmail">Email</string>
+    <string name="txTelefono">Teléfono</string>       
     
-    
+
     
     
     

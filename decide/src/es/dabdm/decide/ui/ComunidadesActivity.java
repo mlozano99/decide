@@ -60,8 +60,7 @@ public class ComunidadesActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-        setContentView(R.layout.l_listacomunidades);       
+		setContentView(R.layout.l_listacomunidades);       
 
 		String tipoComunidad = "A";   
 		new RecuperarComunidades().execute( tipoComunidad );
@@ -74,6 +73,8 @@ public class ComunidadesActivity extends ListActivity {
 				onListItemClick(v,pos,id);				
 			}		   
 		});
+		super.onCreate(savedInstanceState);
+        
 	}
 
 	

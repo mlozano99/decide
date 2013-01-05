@@ -41,6 +41,7 @@
         <activity android:name="es.dabdm.decide.ui.ComunidadesActivity" />
         <activity android:name="es.dabdm.decide.ui.ComunidadesDetalleActivity" />
         <activity android:name="es.dabdm.decide.ui.PreguntasDetalleActivity" />
+        <activity android:name="es.dabdm.decide.ui.CuentaActivity" />
         
         
         <!-- Manolo: borrarlas cuando ya esten implementados las peticiones al servidor y el GCM.-->
