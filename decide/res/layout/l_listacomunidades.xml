@@ -22,15 +22,5 @@
             android:listSelector="@drawable/list_selector" >
             
         </ListView>
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="19dp"
-            android:layout_marginTop="26dp"
-            android:src="@android:drawable/stat_notify_sync" />
         
     </RelativeLayout>
