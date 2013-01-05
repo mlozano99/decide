@@ -8,17 +8,28 @@ import static es.dabdm.decide.GCMCommonUtilities.SERVER_URL;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 
 import com.google.android.gcm.GCMRegistrar;
 
 import es.dabdm.decide.GCMServerUtilities;
 import es.dabdm.decide.R;
+import es.dabdm.decide.modelo.Comunidad;
 import es.dabdm.decide.modelo.Pregunta;
+import es.dabdm.decide.modelo.RespuestaPosible;
+import es.dabdm.decide.util.LVA_Comunidades;
+import es.dabdm.decide.util.LVI_generico;
 import es.dabdm.decide.util.MyHelperBBDD;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ListActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -27,20 +38,31 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class PreguntasDetalleActivity extends BaseActivity {
+public class PreguntasDetalleActivity extends ListActivity {
 
 	    private Integer idPregunta;
+	    Pregunta pregunta;
+	    
 	    TextView textoPregunta;
 		private MyHelperBBDD myHelperBBDD;
-	    
+		
+		ListView lista;
+		LVA_Comunidades listaAdaptador;
+		
 	    AsyncTask<Void, Void, Void> mRegisterTask;
 
 	    private final BroadcastReceiver mHandleMessageReceiver = new BroadcastReceiver() {
@@ -60,18 +82,64 @@ public class PreguntasDetalleActivity extends BaseActivity {
 	    	Bundle bundle = getIntent().getExtras();
             if(bundle!=null){	    	 
 	    	    this.idPregunta = bundle.getInt("idPregunta");
-            }else{
-            	this.idPregunta = obtienePreguntaUltimaNoficacion();
+	    	    guardaPreguntaActuralPreferencias(this.idPregunta);	    	    
             }
+            
             
 	    	this.myHelperBBDD = new MyHelperBBDD(this);
 
-	        Pregunta pregunta = cargaPregunta(this.idPregunta);
+	    	//Las preguntas deben estar previamente en la BBDD
+	        pregunta = cargaPregunta(this.idPregunta);
 	        EditText textoPregunta = (EditText) findViewById(R.id.textoPregunta);
 	        textoPregunta.setText(pregunta.getTexto());
-	    	cargaRespuestasPregunta(this.idPregunta);
+	    	//cargaRespuestasPregunta(this.idPregunta);
+	        
+	    	ListView lista = getListView();
+			lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			        @Override
+					public void onItemClick(AdapterView<?> av, View v, int pos, long id) {
+						// TODO Auto-generated method stub
+					onListItemClick(v,pos,id);				
+				}		   
+			});	        
 	    	
+				
+			ArrayList<LVI_generico> items = new ArrayList<LVI_generico>();
+	    	for( RespuestaPosible respuesta : pregunta.getRespuestasPosibles()){
+	    		    items.add(new LVI_generico(respuesta.getValor(),respuesta.getIdRespuestaPosible()));     
+	    	}	 	    		
+	    	listaAdaptador = new LVA_Comunidades(PreguntasDetalleActivity.this, R.layout.l_list_item, items); 
+	    	setListAdapter(listaAdaptador);	 										
 	    }
+	    
+	    
+		protected void onListItemClick(View v,int pos,long id) {
+			Intent i = new Intent(this, ComunidadesDetalleActivity.class);
+					
+			RespuestaPosible respuestaSeleccionada= pregunta.getRespuestasPosibles().get(pos) ; 				            					
+			mostrarRespuestaSeleccionada("Respuesta seleccionada: " + respuestaSeleccionada.getValor());
+			responderPregunta(pregunta.getIdPregunta(),respuestaSeleccionada.getIdRespuestaPosible());	
+			Log.i( BaseActivity.DEBUG_TAG, "onLongListItemClick respuestaSeleccionada=" + respuestaSeleccionada.getValor() ); 
+		}
+
+		
+
+
+		public void mostrarRespuestaSeleccionada(String mensaje) {
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(PreguntasDetalleActivity.this);			
+			dialogBuilder.setMessage(mensaje);
+			dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					
+				}
+			});
+			
+			AlertDialog alertDialog = dialogBuilder.create();
+			alertDialog.show();
+		}		
+
+		
 	    
 		public Cursor getRespuestas(Integer idPregunta){
 	    	SQLiteDatabase db = this.myHelperBBDD.getReadableDatabase();
@@ -89,45 +157,12 @@ public class PreguntasDetalleActivity extends BaseActivity {
 			//Se responde a una pregunta
 			if(idPregunta!=null && idRespuesta!=null && !idPregunta.equals(-1) && !idRespuesta.equals(-1)){
 					SQLiteDatabase db = this.myHelperBBDD.getReadableDatabase();
-					db.execSQL("UPDATE preguntas SET idRespuestaDada = "+ idRespuesta +" WHERE idPregunta = " + idPregunta +" ;");
-                    
-					if (  idPregunta.equals(obtienePreguntaUltimaNoficacion() ) ){
-                    	 borraPreguntaDePreferencia();//Se da por respondida la notificacion de la pregunta
-                    }
+					db.execSQL("UPDATE preguntas SET idRespuestaDada = "+ idRespuesta +" WHERE idPregunta = " + idPregunta +" ;"); 
 			}		
 			
 			//Hay que hacer una llamada al WS remoto para enviar la respuesta.....
 		}
-		
-		
-		
-	    public void cargaRespuestasPregunta(Integer idPregunta){
-	        TableLayout tabla = (TableLayout) findViewById(R.id.tablaRespuestas);
-	        tabla.removeAllViews();
-	        TableRow fila;
-	        TextView texto;        
-	        Cursor cursor = getRespuestas(idPregunta);
-	        cursor.moveToFirst();
-	        
-	        while (!cursor.isAfterLast()) {
-	            fila = new TableRow(this);
-
-	            // Columna idRespuestaPosible
-	            texto = new TextView(this);
-	            texto.setText(  Integer.toString( cursor.getInt(0) ));
-	            fila.addView(texto);	            
-	            
-	            // Columna valor
-	            texto = new TextView(this);
-	            texto.setText( cursor.getString(1));
-	            fila.addView(texto);
-            
-	            //Aade la fila
-	            tabla.addView(fila);
-	            
-	            cursor.moveToNext();
-	          }
-	    }
+			
 	    
 	    /**
 	     * Obtiene los datos de una pregunta desde la BBDD por su código
@@ -136,14 +171,21 @@ public class PreguntasDetalleActivity extends BaseActivity {
 	     */
 	    @SuppressLint("SimpleDateFormat")
 		public Pregunta cargaPregunta(Integer idPregunta){
-	    	Pregunta pregunta = new Pregunta();
+	    
 	    	SQLiteDatabase db = this.myHelperBBDD.getReadableDatabase();
 			Cursor cursor = db.rawQuery("SELECT texto,idComunidad,fechaLimite FROM preguntas WHERE idPregunta = " + idPregunta, null);
 			cursor.moveToFirst();	    	
-	    	pregunta.setIdPregunta(idPregunta);
+	    	
+			Pregunta pregunta = new Pregunta();
+			List<RespuestaPosible> respuestasPosibles = new ArrayList<RespuestaPosible>();
+			RespuestaPosible respuesta = null;
+			
+			pregunta.setIdPregunta(idPregunta);
 	    	pregunta.setTexto(cursor.getString(0));
 	    	pregunta.setIdComunidad(cursor.getInt(1));
-
+            
+	    	
+	    	
 	    	String fechaLimiteTexto = cursor.getString(2);
 	    	if(fechaLimiteTexto!=null && !"".equals(fechaLimiteTexto)){	    		
 	    		try {
@@ -152,7 +194,20 @@ public class PreguntasDetalleActivity extends BaseActivity {
 				} catch (ParseException e) {
 					pregunta.setFechaLimite(null);
 				}
-	    	}	    	    	
+	    	}	    	  
+	    	cursor.close();
+	     	cursor = db.rawQuery("SELECT idRespuestaPosible,valor FROM respuestas WHERE idPregunta = "+ idPregunta +" ORDER BY idRespuestaPosible", null);
+	     	cursor.moveToFirst();
+		        
+	        while (!cursor.isAfterLast()) {
+	        	respuesta = new RespuestaPosible();
+	        	respuesta.setIdRespuestaPosible( cursor.getInt(0) );
+	        	respuesta.setValor( cursor.getString(1) );	
+	        	respuestasPosibles.add(respuesta);
+	            cursor.moveToNext();
+	        }	    	
+    	
+		    pregunta.setRespuestasPosibles(respuestasPosibles); 
 	    	return pregunta;	    	
 	    }
 	    
@@ -169,10 +224,10 @@ public class PreguntasDetalleActivity extends BaseActivity {
 	    
 	    
 		/**
-		 * Cuando recibe la notificación se deja en las preferencias compartidas
+		 * Esto para mantener el estado en 
 		 * @return
 		 */
-		public Integer obtienePreguntaUltimaNoficacion() {
+		public Integer preguntaActualPreferencias() {
 			try {
 				SharedPreferences preferences = getSharedPreferences("estado.xml",Context.MODE_PRIVATE);		
 				return preferences.getInt("numAyudas",-1);												
@@ -182,6 +237,17 @@ public class PreguntasDetalleActivity extends BaseActivity {
 			
 		}	    
 
+		/**
+		 * Para matenter el estado con la pregunta que estamos trabajando
+		 * @param idPregunta
+		 */
+		public void guardaPreguntaActuralPreferencias(Integer idPregunta){
+			SharedPreferences preferences = getSharedPreferences("estado.xml",Context.MODE_PRIVATE);		
+			Editor editor = preferences.edit();		
+            editor.putInt("idPregunta", idPregunta);
+			editor.commit();
+		}
+		
 		public void borraPreguntaDePreferencia(){
 			SharedPreferences preferences = getSharedPreferences("estado.xml",Context.MODE_PRIVATE);		
 			//Borra la última pregunta
@@ -284,6 +350,5 @@ public class PreguntasDetalleActivity extends BaseActivity {
 	        }
 	    }
 
-	    
-	
+
 }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-      
-
-
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >      
+    
     <EditText
         android:id="@+id/textoPregunta"
         android:layout_width="wrap_content"
@@ -13,41 +11,18 @@
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textMultiLine" >
-
-        <requestFocus />
     </EditText>
     
-    <TableLayout
-         android:id="@+id/tablaRespuestas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textoPregunta"
-        android:layout_below="@+id/textoPregunta"
-        android:layout_marginTop="46dp" >
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </TableRow>
-    </TableLayout>
+    <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/textoPregunta"
+            android:focusable="true"
+            android:listSelector="@drawable/list_selector" >
+            
+   </ListView>    
+    
+    	
    
 </RelativeLayout>
