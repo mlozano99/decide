@@ -47,16 +47,13 @@ import android.widget.AdapterView;
 
 import static es.dabdm.decide.util.Repositorio.URLcomunidades;
 
-
-
 public class ComunidadesActivity extends ListActivity {
 
 	ListaComunidades lista_comunidades; 
 	ListView lista;
 	ArrayAdapter<String> adaptador;
 	LVA_Comunidades listaAdaptador;
-	
-	
+		
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -78,18 +75,11 @@ public class ComunidadesActivity extends ListActivity {
 	}
 
 	
-	
-	
-
-	
 	@Override
 	protected void onRestart() {
 		// TODO Auto-generated method stub
 		super.onRestart();
 	}
-
-
-
 
 	protected void onListItemClick(View v,int pos,long id) {
 		Intent i = new Intent(this, ComunidadesDetalleActivity.class);
@@ -102,11 +92,7 @@ public class ComunidadesActivity extends ListActivity {
 		
 		this.overridePendingTransition(R.anim.a_entra,R.anim.a_sale); 		
 		Log.i( BaseActivity.DEBUG_TAG, "onLongListItemClick id=" + id ); 
-	
-
 	}
-			
-	 
 
 	
 	private class RecuperarComunidades extends AsyncTask<String, Void, ListaComunidades> {
@@ -134,8 +120,7 @@ public class ComunidadesActivity extends ListActivity {
     		HttpGet request = null;
     		List<NameValuePair> pares = new ArrayList<NameValuePair>();
     		pares.add(new BasicNameValuePair("tipo", params[0])); // Parametro tipo de comunidad
-    		ListaComunidades lista_comu = new ListaComunidades();
-    		
+    		ListaComunidades lista_comu = new ListaComunidades();    		
     		
 			try {
 				
@@ -158,7 +143,6 @@ public class ComunidadesActivity extends ListActivity {
 					Gson gson = builder.create();
 					JSONObject json = new JSONObject(responseString);
 					lista_comu =  gson.fromJson(json.toString(), ListaComunidades.class);			
-
 					return lista_comu;
 				}
 				
