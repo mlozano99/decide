@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:id="@+id/l_cuenta" >
+
+    <TextView
+        android:id="@+id/tv_Registro"
+        style="@style/Titulo_pagina"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="13dp"
+        android:textSize="22sp"
+         />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_inicio_sesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_Registro"
+        android:orientation="vertical"
+        android:padding="10dp" 
+        android:layout_marginTop="20dp" 
+        >
+
+         <!-- Email -->
+          <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/txEmail"
+              android:textColor="#372c24" />
+          <EditText
+              android:id="@+id/ET_Mail"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="20dp"
+              android:layout_marginTop="5dp"
+              android:ems="10"
+              android:inputType="textEmailAddress"
+              android:singleLine="true" />
+	  		<!-- Contraseña -->
+            <TextView
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/txPassword"
+              android:textColor="#372c24" />
+            <EditText
+              android:id="@+id/ET_Apellidos"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="20dp"
+              android:layout_marginTop="5dp"
+              android:inputType="textPassword"
+              android:singleLine="true" />
+            <!-- Boton de alta usuario -->
+
+	        <Button
+	            android:id="@+id/b_iniciar_sesion"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="10dp"
+	            android:text="@string/bt_iniciar_sesion" 
+	            android:onClick="b_iniciar_sesion"/>
+	        
+	</LinearLayout>
+
+    
+    
+	<LinearLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/ll_inicio_sesion"
+	    android:orientation="vertical"
+	    android:padding="10dp" >
+
+           <TextView
+               android:id="@+id/tv_DCdescripcion"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="4dp"
+               android:layout_weight="1"
+               android:scrollHorizontally="false"
+               android:text="@string/tx_registrarse"
+               android:textSize="14sp" />
+
+           <Button
+               android:id="@+id/b_registrarse"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:drawableLeft="@drawable/ic_input_add"
+               android:text="@string/bt_registrarse"
+               android:visibility="visible" 
+               android:onClick="b_registrarse"/>
+	</LinearLayout>
+
+
+
+</RelativeLayout>
