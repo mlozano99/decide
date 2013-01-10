@@ -60,5 +60,17 @@ public final class Repositorio {
 	*/
 	public static final String URLusuarios = URLBASE + "usuarios";
 	
+		
+	/*
+	 * Referencia al fichero de preferencias o perfil de usuario
+	 * 
+	 */
+	public static final String PerfilPref = "_perfil";
+	
+	/* Para enviar una notificación al terminal se utiliza esta url
+	 * con los parametros idPregunta   e regId  {pregunta comienza en el 650}
+	 * url 
+	 * http://158.42.252.238:8081/servidorDecide/rest/notificarPregunta?idPregunta=650&regId=APA91bFKhL_B-aMdiUo3cpzRKbB14iaJ4Va-5mixdm0dkx26a3bvzyXodrtf76Q1uGhqMgAkBU2yrKLd4I58nAnHpLdoPnY_Pv6SNrIywwTYoI2xad5Zn2zAZn2FNoIBj7KxYtJaTHE4
+	 */
 	
 }

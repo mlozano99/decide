@@ -16,11 +16,11 @@ public class G_GPS implements LocationListener {
 	private LocationManager locationManager;
 	private boolean gps_activado;
 	private Context contexto;
-	private M_Dialogos alerta;
+	private MDialogos alerta;
 	
 	public G_GPS(Context contexto) {
 		this.contexto=contexto;
-		this.alerta=new M_Dialogos(this.contexto);
+		this.alerta=new MDialogos(this.contexto);
 	}    
 	    
 	public void activar_gps(){

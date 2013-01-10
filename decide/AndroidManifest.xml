@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.dabdm.decide"
     android:versionCode="1"
@@ -9,60 +10,62 @@
 
     <permission
         android:name="es.dabdm.decide.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />    
-    
-    <uses-permission android:name="android.permission.INTERNET"/>    
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>    
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- GCM requires a Google account. -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> 
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <!-- Keeps the processor from sleeping when a message is received. -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />    
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="es.dabdm.decide.permission.C2D_MESSAGE" />
     <!-- This app has permission to register and receive data message. -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-     
+
     <application
-        android:icon="@drawable/ic_launcher"
         android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:permission="android.permission.ACCESS_FINE_LOCATION">
-               
-		     <activity
-		            android:name="es.dabdm.decide.ui.MainActivity"
-		            android:label="@string/app_name">		            
-		            <intent-filter>
-		                <action android:name="android.intent.action.MAIN" />		
-		                <category android:name="android.intent.category.LAUNCHER" />
-		            </intent-filter>
-		        </activity>
-		        
+        android:permission="android.permission.ACCESS_FINE_LOCATION"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="es.dabdm.decide.ui.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name="es.dabdm.decide.ui.ComunidadesActivity" />
         <activity android:name="es.dabdm.decide.ui.ComunidadesDetalleActivity" />
         <activity android:name="es.dabdm.decide.ui.PreguntasDetalleActivity" />
         <activity android:name="es.dabdm.decide.ui.CuentaActivity" />
-        
-        
-        <!-- Manolo: borrarlas cuando ya esten implementados las peticiones al servidor y el GCM.-->
-        <activity android:name="es.dabdm.decide.ui.PruebaServiciosActivity" />           
+        <activity android:name="es.dabdm.decide.ui.PerfilActivity" />
+
+        <!-- Manolo: borrarlas cuando ya esten implementados las peticiones al servidor y el GCM. -->
+        <activity android:name="es.dabdm.decide.ui.PruebaServiciosActivity" />
         <activity android:name="es.dabdm.decide.ui.DemoActivity" />
-        
+
         <!--
           BroadcastReceiver that will receive intents from GCM
           services and handle them to the custom IntentService.
 
           The com.google.android.c2dm.permission.SEND permission is necessary
-          so only GCM services can send data messages for the app.
+          so only GCM services can send data messages for the app.
         -->
         <receiver
             android:name="com.google.android.gcm.GCMBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
+
                 <!-- Receives the actual messages. -->
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <!-- Receives the registration id. -->
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
                 <category android:name="es.dabdm.decide" />
             </intent-filter>
         </receiver>
@@ -72,9 +75,11 @@
           handle received messages.
 
           By default, it must be named .GCMIntentService, unless the
-          application uses a custom BroadcastReceiver that redefines its name.
+          application uses a custom BroadcastReceiver that redefines its name.
         -->
-        <service android:name=".GCMIntentService" />
-        
-</application>    
+        <service android:name="es.dabdm.decide.GCMIntentService" />
+
+
+    </application>
+
 </manifest>

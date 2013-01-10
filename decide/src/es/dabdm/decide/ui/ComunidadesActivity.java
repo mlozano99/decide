@@ -1,6 +1,5 @@
 package es.dabdm.decide.ui;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,20 +8,16 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,6 +41,8 @@ import android.widget.AdapterView;
 
 
 import static es.dabdm.decide.util.Repositorio.URLcomunidades;
+
+
 
 public class ComunidadesActivity extends ListActivity {
 
@@ -95,6 +92,8 @@ public class ComunidadesActivity extends ListActivity {
 	}
 
 	
+
+	
 	private class RecuperarComunidades extends AsyncTask<String, Void, ListaComunidades> {
 
 		ProgressDialog ds; 
@@ -108,8 +107,6 @@ public class ComunidadesActivity extends ListActivity {
 	    	ds.show();
 	    	super.onPreExecute();
 		}
-
-
 
 		@Override
     	protected ListaComunidades doInBackground(String... params) {

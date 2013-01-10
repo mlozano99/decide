@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Textos globales -->
@@ -9,45 +10,41 @@
     <string name="hello_world">Una prueba para subir un commit</string>
     <string name="title_activity_main">Decide</string>
     <string name="title_activity_base">BaseActivity</string>
-    
+
     <!-- Textos locales. l_location_activity -->
     <string name="latitud">Latitud</string>
     <string name="longitud">Longitud</string>
     <string name="desconocido">Desconocida</string>
-
     <string name="muestraGPS">¿Quieres activar el GPS?</string>
     <string name="locationManager">Error ocurrido en al activar el GPS "Location Manager"</string>
-    
-    
-    
     <string name="titulo_lista_comu">Comunidades</string>
-    
     <string name="titulo_Test_GCM">Test de GCM</string>
-    
-    
-    <!--  l_detallecomunidad -->
+
+    <!-- l_detallecomunidad -->
     <string name="bt_suscribir">Suscribir a la comunidad</string>
     <string name="bt_desuscribir">Quitar suscripcion</string>
-    
-    
-    <!--  l_cuenta --> 
+
+    <!-- l_cuenta -->
     <string name="bt_cuenta">Ver cuenta</string>
     <string name="tx_registrarse">Para poder suscribirte a la lista de comunidades debes estar registrado en DECIDE. </string>
     <string name="bt_registrarse">Date de alta en la aplicación</string>
     <string name="bt_iniciar_sesion">Iniciar sesión</string>
- 
+    <string name="txPassword">Contraseña</string>
 
+    <!-- l_perfil -->
+    <string name="tx_perfilusuario">Perfil de usuario</string>
+    <string name="txNombreUsuario">Nombre</string>
+    <string name="bt_cerrarsesion">Cerrar sesion</string>
     
-    <!--  l_usuario -->
-    <string name="tx_usuario">Texto de pantalla de usuario</string> 
+    
+    <!-- l_usuario_alta -->
+    <string name="tx_usuario">Texto de pantalla de usuario</string>
     <string name="tx_alta_usuario">Alta de usuario</string>
-    <string name="bt_alta_usuario">Alta de usuario</string>
-    
+    <string name="b_alta_usuario">Alta de usuario</string>
     <string name="txNombre">Nombre</string>
     <string name="txApellidos">Apellidos</string>
     <string name="txEmail">Email</string>
-    <string name="txTelefono">Teléfono</string>       
-    
+    <string name="txTelefono">Teléfono</string>
 
     
     
@@ -69,4 +66,6 @@
     <string name="options_unregister">Unregister</string>
     <string name="options_clear">Clear</string>
     <string name="options_exit">Exit</string>
+    <string name="title_activity_perfil">PerfilActivity</string>
+
 </resources>

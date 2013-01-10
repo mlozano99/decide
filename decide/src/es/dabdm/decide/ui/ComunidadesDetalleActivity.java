@@ -15,7 +15,9 @@ import es.dabdm.decide.R;
 import es.dabdm.decide.modelo.Comunidad;
 import es.dabdm.decide.modelo.ListaComunidades;
 import es.dabdm.decide.util.Repositorio;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,6 +30,9 @@ import android.widget.Toast;
 
 public class ComunidadesDetalleActivity extends BaseActivity {
 
+	SharedPreferences preferences ;
+	boolean usu_iden;
+	String email;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -35,6 +40,20 @@ public class ComunidadesDetalleActivity extends BaseActivity {
 		setContentView(R.layout.l_detallcomunidad);
 		Intent i = getIntent();
 		final Comunidad comu = (Comunidad) i.getSerializableExtra("Comunidad");	
+		
+	
+		preferences = getSharedPreferences(Repositorio.PerfilPref, Context.MODE_PRIVATE);
+        usu_iden = (preferences.getInt("identificado", 0)==1) ? true:false ; 
+        
+        
+        
+        /* **************************************************** */
+        /* Comprobaciones de usuario identificado */
+        	email = preferences.getString("email","");
+		
+		
+		
+		
 		
 		TextView t = (TextView) findViewById(R.id.tv_DCnombre);		
 		t.setText( comu.getNombre() + comu.getIdComunidad() );
@@ -51,7 +70,8 @@ public class ComunidadesDetalleActivity extends BaseActivity {
 		
 	    b1.setOnClickListener(new View.OnClickListener() 
 		{	
-	    	String email = "jdiazcan@email.es"; 	
+	    	//String email = "jdiazcan@email.es"; 
+	    	
 		 	Integer idComunidad = comu.getIdComunidad();
 		 	Object[] parametros =  {email, idComunidad} ; 
 	    	
