@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    tools:context=".PerfilActivity" >
+
+    <!-- Header  Starts android:background="@layout/header_gradient" -->
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         >
+
+        <!--  android:padding="13dp"  -->
+        <TextView
+            android:id="@+id/tv_PerfildeUsuario"
+            style="@style/Titulo_pagina"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="13dp"
+            android:text="@string/tx_perfilusuario"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="90dp"
+        android:layout_below="@id/header" >
+
+    </LinearLayout>
+
+    <!-- Información de usuario -->
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:background="#DEDEDE"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <!-- Nombre y apellidos -->
+
+        <!-- Email -->
+
+        <!-- Teléfono -->
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:paddingBottom="20dp"
+        android:src="@drawable/avatar_des" 
+        android:contentDescription="@string/txNombreUsuario"/>
+
+    
+        <TextView
+        android:id="@+id/tv_nombreusuario"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txNombreUsuario"
+        android:textColor="#372c24"
+        android:gravity="center_horizontal"
+        android:textSize="18sp" />
+    
+    <TextView
+        android:id="@+id/tv_emailusuario"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/txEmail"
+        android:textColor="#372c24"
+        android:textSize="18sp" />
+
+
+
+    <TextView
+        android:id="@+id/tv_telefonousuario"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/txTelefono"
+        android:textColor="#372c24"
+        android:textSize="18sp" />
+
+
+	</LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/bt_cerrarsesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="b_cerrar_sesion"
+        android:text="@string/bt_cerrarsesion" />
+
+</RelativeLayout>
+    
