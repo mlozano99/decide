@@ -39,7 +39,7 @@
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/header"
         android:background="#DEDEDE"
@@ -60,11 +60,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:paddingBottom="20dp"
+        android:paddingLeft="0dp"
+        
         android:src="@drawable/avatar_des" 
         android:contentDescription="@string/txNombreUsuario"/>
 
     
-        <TextView
+	<TextView
         android:id="@+id/tv_nombreusuario"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -81,8 +83,6 @@
         android:text="@string/txEmail"
         android:textColor="#372c24"
         android:textSize="18sp" />
-
-
 
     <TextView
         android:id="@+id/tv_telefonousuario"
@@ -102,40 +102,29 @@
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" >
-     -->    
-	    <LinearLayout
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:orientation="vertical"
-	        android:background="#FFFFFF"
-	        android:paddingBottom="10dp"
-	        android:paddingLeft="10dp"
-	        android:paddingRight="10dp" >
-	     
-	        <ListView
-	        android:id="@android:id/list"
-	        android:layout_width="fill_parent"
-	        android:layout_height="match_parent"
-	
-	        android:focusable="true"
-	        android:listSelector="@drawable/list_selector" />
+     -->
 
-		</LinearLayout>
-	<!--</ScrollingLayout> -->
-    
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:focusable="true"
+        android:listSelector="@drawable/list_selector" >
+    </ListView>
+
+
     
 	</LinearLayout>
 
-
-
-    <Button
-        android:id="@+id/bt_cerrarsesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="b_cerrar_sesion"
-        android:text="@string/bt_cerrarsesion" />
-
+        <Button
+            android:id="@+id/bt_cerrarsesion"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:onClick="b_cerrar_sesion"
+            android:text="@string/bt_cerrarsesion" />
+    
 </RelativeLayout>
     
