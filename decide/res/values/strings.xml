@@ -3,7 +3,7 @@
 
     <!-- Textos globales -->
 
-    <string name="app_name">decide</string>
+    <string name="app_name">DECIDE</string>
     <string name="menu_settings">Configuración</string>
 
     <!-- Textos locales. Se especifica cada layout -->
@@ -46,6 +46,12 @@
     <string name="txEmail">Email</string>
     <string name="txTelefono">Teléfono</string>
 
+    
+    
+    <!-- l_detallepregunta -->
+    <string name="ti_Pregunta">Pregunta</string>
+
+    
     
     
     

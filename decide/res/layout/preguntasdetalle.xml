@@ -4,14 +4,27 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >      
     
-    <EditText
+   	<TextView
+		android:id="@+id/tv_Pregunta"
+		style="@style/Titulo_pagina"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:padding="13dp"
+		android:textSize="22sp" 
+		android:text="@string/ti_Pregunta"/>
+    
+   	
+   	
+    <TextView
         android:id="@+id/textoPregunta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"      
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:inputType="textMultiLine" >
-    </EditText>
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_Pregunta"
+        android:layout_margin="4dp"
+        android:ellipsize="none"
+        android:scrollHorizontally="false"
+        android:textSize="18sp" />       
+    
     
     <ListView
             android:id="@android:id/list"

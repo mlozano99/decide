@@ -9,27 +9,20 @@ import static es.dabdm.decide.GCMCommonUtilities.SERVER_URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-
 import com.google.android.gcm.GCMRegistrar;
-
 import es.dabdm.decide.GCMServerUtilities;
 import es.dabdm.decide.R;
-import es.dabdm.decide.modelo.Comunidad;
 import es.dabdm.decide.modelo.Pregunta;
 import es.dabdm.decide.modelo.RespuestaPosible;
 import es.dabdm.decide.util.LVA_Comunidades;
 import es.dabdm.decide.util.LVI_generico;
+import es.dabdm.decide.util.MDialogos;
 import es.dabdm.decide.util.MyHelperBBDD;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -38,8 +31,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -48,22 +39,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 public class PreguntasDetalleActivity extends ListActivity {
 
 	    private Integer idPregunta;
-	    Pregunta pregunta;
-	    
+	    Pregunta pregunta;	    
 	    TextView textoPregunta;
-		private MyHelperBBDD myHelperBBDD;
-		
+		private MyHelperBBDD myHelperBBDD;		
 		ListView lista;
 		LVA_Comunidades listaAdaptador;
-		
+		MDialogos alerta;
 	    AsyncTask<Void, Void, Void> mRegisterTask;
+    
 
 	    private final BroadcastReceiver mHandleMessageReceiver = new BroadcastReceiver() {
 	        @Override
@@ -71,26 +59,27 @@ public class PreguntasDetalleActivity extends ListActivity {
 	            String newMessage = intent.getExtras().getString(EXTRA_MESSAGE);
 	            textoPregunta.append(newMessage + "\n");
 	        }
-	    };	    
+	    };		    	    
+	    
 	    
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {	      
 	    	super.onCreate(savedInstanceState);
-	    	setContentView(R.layout.preguntasdetalle);
-             
+	    	setContentView(R.layout.preguntasdetalle);    
+	    	alerta = new MDialogos(this);
 	    	
 	    	Bundle bundle = getIntent().getExtras();
             if(bundle!=null){	    	 
 	    	    this.idPregunta = bundle.getInt("idPregunta");
 	    	    guardaPreguntaActuralPreferencias(this.idPregunta);	    	    
-            }
-            
+            }            
             
 	    	this.myHelperBBDD = new MyHelperBBDD(this);
-
+	    	
 	    	//Las preguntas deben estar previamente en la BBDD
 	        pregunta = cargaPregunta(this.idPregunta);
 	        EditText textoPregunta = (EditText) findViewById(R.id.textoPregunta);
+	        
 	        textoPregunta.setText(pregunta.getTexto());
 	    	//cargaRespuestasPregunta(this.idPregunta);
 	        
@@ -101,46 +90,42 @@ public class PreguntasDetalleActivity extends ListActivity {
 						// TODO Auto-generated method stub
 					onListItemClick(v,pos,id);				
 				}		   
-			});	        
-	    	
+			});	    	
 				
 			ArrayList<LVI_generico> items = new ArrayList<LVI_generico>();
 	    	for( RespuestaPosible respuesta : pregunta.getRespuestasPosibles()){
 	    		    items.add(new LVI_generico(respuesta.getValor(),respuesta.getIdRespuestaPosible()));     
 	    	}	 	    		
+	    	
 	    	listaAdaptador = new LVA_Comunidades(PreguntasDetalleActivity.this, R.layout.l_list_item, items); 
 	    	setListAdapter(listaAdaptador);	 										
 	    }
 	    
 	    
-		protected void onListItemClick(View v,int pos,long id) {
-			Intent i = new Intent(this, ComunidadesDetalleActivity.class);
-					
-			RespuestaPosible respuestaSeleccionada= pregunta.getRespuestasPosibles().get(pos) ; 				            					
-			mostrarRespuestaSeleccionada("Respuesta seleccionada: " + respuestaSeleccionada.getValor());
-			responderPregunta(pregunta.getIdPregunta(),respuestaSeleccionada.getIdRespuestaPosible());	
+		protected void onListItemClick(View v,int pos,long id) {			
+			RespuestaPosible respuestaSeleccionada= pregunta.getRespuestasPosibles().get(pos) ;
+			alerta.showMensajeEstandard(this, "Respuesta seleccionada: " + respuestaSeleccionada.getValor());
+			responderPregunta(pregunta.getIdPregunta(),respuestaSeleccionada.getIdRespuestaPosible());			
 			Log.i( BaseActivity.DEBUG_TAG, "onLongListItemClick respuestaSeleccionada=" + respuestaSeleccionada.getValor() ); 
-		}
-
-		
-
-
-		public void mostrarRespuestaSeleccionada(String mensaje) {
-			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(PreguntasDetalleActivity.this);			
-			dialogBuilder.setMessage(mensaje);
-			dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {				
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					
-				}
-			});
-			
-			AlertDialog alertDialog = dialogBuilder.create();
-			alertDialog.show();
 		}		
 
-		
-	    
+
+		@Override
+	    protected void onDestroy() {
+	        if (mRegisterTask != null) {
+	            mRegisterTask.cancel(true);
+	        }
+	        unregisterReceiver(mHandleMessageReceiver);
+	        GCMRegistrar.onDestroy(this);
+	        super.onDestroy();
+	    }
+
+	    /**
+	     * Este método NO se utiliza deberías borrarlo
+	     * Devuelve un cursor con la lista de posibles respuestas
+	     * @param idPregunta
+	     * @return
+	     */
 		public Cursor getRespuestas(Integer idPregunta){
 	    	SQLiteDatabase db = this.myHelperBBDD.getReadableDatabase();
 	    	Cursor cursor = db.rawQuery("SELECT idRespuestaPosible,valor FROM respuestas WHERE idPregunta = "+ idPregunta +" ORDER BY idRespuestaPosible", null);
@@ -148,6 +133,8 @@ public class PreguntasDetalleActivity extends ListActivity {
 	    	return cursor;
 	    }	    
 	    
+		
+		
 		/**
 		 * Guardamos en BBDD que ha respondido el usuario
 		 * @param idPregunta
@@ -158,8 +145,7 @@ public class PreguntasDetalleActivity extends ListActivity {
 			if(idPregunta!=null && idRespuesta!=null && !idPregunta.equals(-1) && !idRespuesta.equals(-1)){
 					SQLiteDatabase db = this.myHelperBBDD.getReadableDatabase();
 					db.execSQL("UPDATE preguntas SET idRespuestaDada = "+ idRespuesta +" WHERE idPregunta = " + idPregunta +" ;"); 
-			}		
-			
+			}			
 			//Hay que hacer una llamada al WS remoto para enviar la respuesta.....
 		}
 			
@@ -183,8 +169,6 @@ public class PreguntasDetalleActivity extends ListActivity {
 			pregunta.setIdPregunta(idPregunta);
 	    	pregunta.setTexto(cursor.getString(0));
 	    	pregunta.setIdComunidad(cursor.getInt(1));
-            
-	    	
 	    	
 	    	String fechaLimiteTexto = cursor.getString(2);
 	    	if(fechaLimiteTexto!=null && !"".equals(fechaLimiteTexto)){	    		
@@ -212,6 +196,7 @@ public class PreguntasDetalleActivity extends ListActivity {
 	    }
 	    
 	    
+	    
 	    public Integer obtieneUnaPreguntaPorResponderEnBBDD(){
 			
 	    	Integer idPreguntaEncontrada = -1;
@@ -220,8 +205,7 @@ public class PreguntasDetalleActivity extends ListActivity {
 			cursor.moveToFirst();
 			idPreguntaEncontrada = cursor.getInt(0);			
 			return idPreguntaEncontrada;
-	    }
-	    
+	    }	    
 	    
 		/**
 		 * Esto para mantener el estado en 
@@ -233,9 +217,8 @@ public class PreguntasDetalleActivity extends ListActivity {
 				return preferences.getInt("numAyudas",-1);												
 			} catch (Exception e) {
 				return -1;
-			}		
-			
-		}	    
+			}			
+		}
 
 		/**
 		 * Para matenter el estado con la pregunta que estamos trabajando
@@ -256,14 +239,16 @@ public class PreguntasDetalleActivity extends ListActivity {
 			editor.commit();
 		}
 		
-	    @Override
+	    
+		@Override
 	    public boolean onCreateOptionsMenu(Menu menu) {
 	        MenuInflater inflater = getMenuInflater();
 	        inflater.inflate(R.menu.options_menu, menu);
 	        return true;
 	    }
 
-	    @Override
+	    
+		@Override
 	    public boolean onOptionsItemSelected(MenuItem item) {
 	        switch(item.getItemId()) {
 	            case R.id.options_clear:
@@ -277,16 +262,14 @@ public class PreguntasDetalleActivity extends ListActivity {
 	        }
 	    }
 
-	    @Override
-	    protected void onDestroy() {
-	        if (mRegisterTask != null) {
-	            mRegisterTask.cancel(true);
-	        }
-	        unregisterReceiver(mHandleMessageReceiver);
-	        GCMRegistrar.onDestroy(this);
-	        super.onDestroy();
-	    }
 
+
+	    
+		
+		
+		
+		
+	    
 	    
        public void registrarGCM(){
     	  
@@ -352,3 +335,22 @@ public class PreguntasDetalleActivity extends ListActivity {
 
 
 }
+
+//Intent i = new Intent(this, ComunidadesDetalleActivity.class);
+
+//mostrarRespuestaSeleccionada("Respuesta seleccionada: " + respuestaSeleccionada.getValor());
+/*
+public void mostrarRespuestaSeleccionada(String mensaje) {
+	AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(PreguntasDetalleActivity.this);			
+	dialogBuilder.setMessage(mensaje);
+	dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {				
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			
+		}
+	});
+	
+	AlertDialog alertDialog = dialogBuilder.create();
+	alertDialog.show();
+}		
+*/
