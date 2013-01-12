@@ -68,8 +68,8 @@ public class PerfilActivity extends ListActivity{
 			tv_telefono.setText(cuenta.getString("telefono"));
 			
 			comunidades_suscritas();
-		super.onCreate(savedInstanceState);	
 		}
+		super.onCreate(savedInstanceState);	
 	}
 
 		
@@ -85,7 +85,9 @@ public class PerfilActivity extends ListActivity{
 		super.onResume();
 	}
 	
-	
+	/* ************************************************* */
+	/* Botones del layout */
+	/* ************************************************* */
 	public void b_cerrar_sesion(View view) {
 		cuenta.cerrarSesion();
 	   	this.startActivity(new Intent(this, CuentaActivity.class)); 
@@ -134,7 +136,7 @@ public class PerfilActivity extends ListActivity{
     		List<NameValuePair> pares = new ArrayList<NameValuePair>();
        		pares.add(new BasicNameValuePair("email", params[0])); // Email usuario
     		ListaComunidades lista_comu = new ListaComunidades();    		
-    		Log.i("RecuperarComunidadesSuscritas","Peticion a " + Repositorio.URLsuscripciones);
+    		Log.i("RecuperarComunidadesSuscritas","Peticion a " + Repositorio.URLsuscripciones + "?" + URLEncodedUtils.format(pares, "utf-8"));
     		
 			try {
 				
@@ -169,26 +171,35 @@ public class PerfilActivity extends ListActivity{
 				e.printStackTrace();
 			} catch (JSONException e) {
 				e.printStackTrace();
+			} catch (Exception e) {
+					e.printStackTrace();
 			}
+			
 			return lista_comu;
     	}
 		
 		@Override
 		protected void onPostExecute(ListaComunidades comunidades) {
 			// TODO Auto-generated method stub
- 
-			if (comunidades!=null) { 
-				lista_comunidades=comunidades;
-				
-				ArrayList<LVI_generico> items = new ArrayList<LVI_generico>();
-	    		for(Comunidad c : comunidades.getComunidades()){
-	    		    items.add(new LVI_generico(c.getNombre(),c.getIdComunidad()));     
-	    		}	 	    		
-	    		listaAdaptador = new LVA_Comunidades(PerfilActivity.this, R.layout.l_list_item, items); 
-	    		setListAdapter(listaAdaptador);	 				
+			try {
+				if (comunidades!=null) { 
+					lista_comunidades=comunidades;
+					
+					ArrayList<LVI_generico> items = new ArrayList<LVI_generico>();
+		    		for(Comunidad c : comunidades.getComunidades()){
+		    		    items.add(new LVI_generico(c.getNombre(),c.getIdComunidad()));     
+		    		}	 	    		
+		    		listaAdaptador = new LVA_Comunidades(PerfilActivity.this, R.layout.l_list_item, items); 
+		    		setListAdapter(listaAdaptador);	 				
+				}
+			}			
+			catch (Exception e) {
+				e.printStackTrace();
 			}
-			ds.dismiss();
-			super.onPostExecute(comunidades);
+			finally {			
+				ds.dismiss();
+				super.onPostExecute(comunidades);
+			}
 		}
 	} //Fin asyncTask
 
