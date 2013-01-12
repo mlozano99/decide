@@ -25,9 +25,9 @@ import android.content.Intent;
 public final class GCMCommonUtilities {
 
     /**
-     * Base URL of the Demo Server (such as http://my_host:8080/gcm-demo)
+     * Base URL of the Demo Server (such as http://my_host:8080/gcm-demo) Se ha cambiado esto pentec2.upvnet.upv.es
      */
-    public static final String SERVER_URL = "http://pentec2.upvnet.upv.es:8081/servidorDecide/rest";
+    public static final String SERVER_URL = "http://158.42.252.238:8081/servidorDecide/rest";
 
     //
     //Key for server apps (with IP locking) 
