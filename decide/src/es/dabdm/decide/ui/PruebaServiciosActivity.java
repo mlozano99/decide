@@ -17,6 +17,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -369,7 +370,7 @@ public class PruebaServiciosActivity extends BaseActivity {
 	    	protected Void doInBackground(Object...params) {
 	            		
 	    		HttpClient client = new DefaultHttpClient();
-	    		HttpDelete request = null;
+	    		HttpPost request = null;
 	    		List<NameValuePair> pares = new ArrayList<NameValuePair>();
 	    		
 	    	    String email = (String) params[0];
@@ -378,11 +379,12 @@ public class PruebaServiciosActivity extends BaseActivity {
 	    		pares.add( new BasicNameValuePair("idComunidad",  Integer.toString(idComunidad) ) );
 	    		 		    
 				try {
-// Hay que probar si funciona correctamente esto!!!!!!!!!!!!!!!!!!!
-					android.util.Log.i("EnviarDesuscripcionUsuarioComunidad","Peticion a " + Repositorio.URLsuscripciones);					
-					request = new HttpDelete(Repositorio.URLsuscripciones  + "?" + URLEncodedUtils.format(pares, "utf-8"));
-							
-					client.execute(request); // No hace falta el response... no hay respuesta a esta peticion desde el servidor				
+
+					android.util.Log.i("EnviarDesuscripcionUsuarioComunidad","Peticion a " + Repositorio.URLdesuscripcion);		
+					request = new HttpPost(Repositorio.URLdesuscripcion);
+					request.setEntity(new UrlEncodedFormEntity(pares));				
+					client.execute(request); // No hace falta el response... no hay respuesta a esta peticion desde el servidor							
+		
 					publishProgress();
 					
 				}catch (Exception e) {
