@@ -18,7 +18,9 @@ public class Pregunta implements Serializable{
 	private Date fechaLimite;
 	
 	private List<RespuestaPosible> respuestasPosibles;
-
+	//Identificador de una de las respuestas posibles(la que ha respondido o si no se ha respondido es nulo)
+	private Integer idRespuestaDada; 
+	
 	public Pregunta() {
 	}
 	
@@ -67,6 +69,14 @@ public class Pregunta implements Serializable{
 
 	public void setRespuestasPosibles(List<RespuestaPosible> respuestasPosibles) {
 		this.respuestasPosibles = respuestasPosibles;
+	}
+
+	public Integer getIdRespuestaDada() {
+		return idRespuestaDada;
+	}
+
+	public void setIdRespuestaDada(Integer idRespuestaDada) {
+		this.idRespuestaDada = idRespuestaDada;
 	}
 
 
