@@ -23,8 +23,7 @@ public final class Repositorio {
 	
 
 	/*  Se usa el mismo punto, lo único que cambia es el método de la petición que tiene diferentes significados
-	 *  @DELETE
-         public void deSuscribirUsusarioComunidad( String email, Integer idComunidad) --> Desuscribir de una comunidad
+	 * 
                    
 	   @PUT
 	     public void suscribirUsusarioComunidad(String email, Integer idComunidad)  -> Suscribir de una comunidad
@@ -37,7 +36,14 @@ public final class Repositorio {
 	public static final String URLsuscripciones = URLBASE + "suscripciones";
 	
 	
-
+	/*
+       Se ha separado de la URI anterior, porque @DELETE no acepta parametros, y se ha hecho con post en esta otra URI
+       
+       @POST
+       public void desuscribir(String email, Integer idComunidad);  --> Desuscribir de una comunidad
+	 */
+	public static final String URLdesuscripcion = URLBASE + "desuscribir";
+	
 	/* 
          @PUT
 	       public void responderPregunta(Integer idPregunta,String email, Integer idRespuesta) --> El usuario responde una pregunta 
