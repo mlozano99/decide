@@ -133,7 +133,7 @@ public class CuentaActivity extends BaseActivity {
 	
 		
 	/* ************************************************************ 
-	 * Gestión de los Eventos para Iniciar sesión y Registrarse
+	 * Gestión de los Botones Eventos para Iniciar sesión y Registrarse
 	 * **
 	 */
 	
@@ -148,7 +148,7 @@ public class CuentaActivity extends BaseActivity {
 	public void b_registrarse(View view) {
 		this.showRegistro=true;			
 		this.alerta.showRegistro();
-	}	
+	}		
 	
 	/* 
 	 * Enviar datos de registro al servidor

@@ -37,7 +37,6 @@ import com.google.gson.GsonBuilder;
 
 import es.dabdm.decide.modelo.Pregunta;
 import es.dabdm.decide.modelo.RespuestaPosible;
-import es.dabdm.decide.ui.DemoActivity;
 import es.dabdm.decide.ui.PreguntasDetalleActivity;
 import es.dabdm.decide.util.MyHelperBBDD;
 
@@ -47,8 +46,7 @@ import es.dabdm.decide.util.MyHelperBBDD;
 public class GCMIntentService extends GCMBaseIntentService {
 
     @SuppressWarnings("hiding")
-    private static final String TAG = "GCMIntentService";
-       
+    private static final String TAG = "GCMIntentService";       
     
     public GCMIntentService() {
         super(SENDER_ID);
@@ -57,6 +55,7 @@ public class GCMIntentService extends GCMBaseIntentService {
     @Override
     protected void onRegistered(Context context, String registrationId) {
         Log.i(TAG, "Device registered: regId = " + registrationId);
+        
         displayMessage(context, getString(R.string.gcm_registered));
         GCMServerUtilities.register(context, registrationId);
     }

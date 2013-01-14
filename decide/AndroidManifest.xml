@@ -44,7 +44,9 @@
         <activity android:name="es.dabdm.decide.ui.PreguntasDetalleActivity" />
         <activity android:name="es.dabdm.decide.ui.CuentaActivity" />
         <activity android:name="es.dabdm.decide.ui.PerfilActivity" />
-
+		<activity android:name="es.dabdm.decide.ui.PreguntasActivity" />
+		<activity android:name="es.dabdm.decide.ui.InfoActivity" />
+        
         <!-- Manolo: borrarlas cuando ya esten implementados las peticiones al servidor y el GCM. -->
         <activity android:name="es.dabdm.decide.ui.PruebaServiciosActivity" />
         <activity android:name="es.dabdm.decide.ui.DemoActivity" />

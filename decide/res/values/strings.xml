@@ -18,8 +18,16 @@
     <string name="muestraGPS">¿Quieres activar el GPS?</string>
     <string name="locationManager">Error ocurrido en al activar el GPS "Location Manager"</string>
     <string name="titulo_lista_comu">Comunidades</string>
-    <string name="titulo_Test_GCM">Test de GCM</string>
-
+    
+    
+    <!-- l_main -->
+    <string name="bt_titulo_comunidad">Comunidades</string>
+    <string name="bt_titulo_cuenta">Cuenta</string>
+    <string name="bt_titulo_preguntas">Preguntas</string>
+    <string name="bt_titulo_info">Información</string>
+    <string name="titulo_Test_GCM">Test de GCM</string>    
+    
+    
     <!-- l_detallecomunidad -->
     <string name="bt_suscribir">Suscribir a la comunidad</string>
     <string name="bt_desuscribir">Quitar suscripcion</string>
@@ -45,12 +53,17 @@
     <string name="txApellidos">Apellidos</string>
     <string name="txEmail">Email</string>
     <string name="txTelefono">Teléfono</string>
-
     
     
     <!-- l_detallepregunta -->
-    <string name="ti_Pregunta">Pregunta</string>
+    <string name="ti_Pregunta">Preguntas</string>
 
+    
+    <!-- l_info -->
+    <string name="ti_informacion">Informacion</string>
+    
+    
+     
     
     
     

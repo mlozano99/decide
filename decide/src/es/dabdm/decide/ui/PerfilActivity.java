@@ -1,7 +1,7 @@
 package es.dabdm.decide.ui;
 
 
-import static es.dabdm.decide.util.Repositorio.URLcomunidades;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -177,7 +177,7 @@ public class PerfilActivity extends ListActivity{
 			
 			return lista_comu;
     	}
-		
+		 
 		@Override
 		protected void onPostExecute(ListaComunidades comunidades) {
 			// TODO Auto-generated method stub

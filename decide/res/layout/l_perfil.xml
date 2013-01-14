@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
          >
 
-        <!--  android:padding="13dp"  -->
+
         <TextView
             android:id="@+id/tv_PerfildeUsuario"
             style="@style/Titulo_pagina"

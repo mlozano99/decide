@@ -1,10 +1,8 @@
 package es.dabdm.decide.ui;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -13,26 +11,15 @@ import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONArray;
-import org.json.JSONStringer;
-
-
-
 import es.dabdm.decide.R;
 import es.dabdm.decide.modelo.Comunidad;
-import es.dabdm.decide.modelo.ListaComunidades;
 import es.dabdm.decide.util.MCuenta;
 import es.dabdm.decide.util.Repositorio;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -156,7 +143,7 @@ public class ComunidadesDetalleActivity extends BaseActivity {
 		protected void onPostExecute(Object[] result) {
 			// TODO Auto-generated method stub
 
-    		String email = result[0].toString();    		
+		
     		String comu_suscritas = cuenta.getString("CoSuscritas");
     		comu_suscritas= comu_suscritas.length()==0 ? comu.getIdComunidad().toString() : "," + comu.getIdComunidad().toString() ;
    		
@@ -238,7 +225,6 @@ public class ComunidadesDetalleActivity extends BaseActivity {
     		
     		
     		/* Activa la suscripcion */
-    		boolean suscrita = ls_comu.contains(comu.getIdComunidad().toString());
 			b1.setVisibility(View.VISIBLE);
 			b2.setVisibility(View.GONE);
     		

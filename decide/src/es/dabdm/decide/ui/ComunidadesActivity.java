@@ -1,5 +1,6 @@
 package es.dabdm.decide.ui;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,8 +43,6 @@ import android.widget.AdapterView;
 
 import static es.dabdm.decide.util.Repositorio.URLcomunidades;
 
-
-
 public class ComunidadesActivity extends ListActivity {
 
 	ListaComunidades lista_comunidades; 
@@ -78,17 +77,18 @@ public class ComunidadesActivity extends ListActivity {
 		super.onRestart();
 	}
 
+
 	protected void onListItemClick(View v,int pos,long id) {
 		Intent i = new Intent(this, ComunidadesDetalleActivity.class);
-		
 		//LVI_generico item = listaAdaptador.getItem(pos);		
+
 		Comunidad ele=  lista_comunidades.getComunidades().get(pos) ; 				
 		i.putExtra("Comunidad", ele);
 
 		startActivity(i);  
 		
 		this.overridePendingTransition(R.anim.a_entra,R.anim.a_sale); 		
-		Log.i( BaseActivity.DEBUG_TAG, "onLongListItemClick id=" + id ); 
+		Log.i( BaseActivity.DEBUG_TAG, "Click id=" + id ); 
 	}
 
 	
@@ -142,15 +142,16 @@ public class ComunidadesActivity extends ListActivity {
 					lista_comu =  gson.fromJson(json.toString(), ListaComunidades.class);			
 					return lista_comu;
 				}
-				
-
+		
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
-			}catch (JSONException e) {
+			} catch (JSONException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			return lista_comu;
@@ -161,19 +162,26 @@ public class ComunidadesActivity extends ListActivity {
 		@Override
 		protected void onPostExecute(ListaComunidades comunidades) {
 			// TODO Auto-generated method stub
- 
-			if (comunidades!=null) { // || (!comunidades.getComunidades().isEmpty())) {
-				lista_comunidades=comunidades;
+ 			try {
 				
-				ArrayList<LVI_generico> items = new ArrayList<LVI_generico>();
-	    		for(Comunidad c : comunidades.getComunidades()){
-	    		    items.add(new LVI_generico(c.getNombre(),c.getIdComunidad()));     
-	    		}	 	    		
-	    		listaAdaptador = new LVA_Comunidades(ComunidadesActivity.this, R.layout.l_list_item, items); 
-	    		setListAdapter(listaAdaptador);	 				
+				if (comunidades!=null) { // || (!comunidades.getComunidades().isEmpty())) {
+					lista_comunidades=comunidades;
+					
+					ArrayList<LVI_generico> items = new ArrayList<LVI_generico>();
+		    		for(Comunidad c : comunidades.getComunidades()){
+		    		    items.add(new LVI_generico(c.getNombre(),c.getIdComunidad()));     
+		    		}	 	    		
+		    		listaAdaptador = new LVA_Comunidades(ComunidadesActivity.this, R.layout.l_list_item, items); 
+		    		setListAdapter(listaAdaptador);	 				
+				}
 			}
-			ds.dismiss();
-			super.onPostExecute(comunidades);
+			catch (Exception e) {
+				
+			}
+			finally {
+				ds.dismiss();
+				super.onPostExecute(comunidades);
+			}
 		}
 		
 	}

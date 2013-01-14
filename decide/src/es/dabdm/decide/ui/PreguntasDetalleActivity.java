@@ -66,9 +66,9 @@ public class PreguntasDetalleActivity extends ListActivity {
 	    public void onCreate(Bundle savedInstanceState) {	      
 	    	super.onCreate(savedInstanceState);
 	    	setContentView(R.layout.preguntasdetalle);    
-	    	alerta = new MDialogos(this);
-	    	
+	    	alerta = new MDialogos(this);	    	
 	    	Bundle bundle = getIntent().getExtras();
+	    	
             if(bundle!=null){	    	 
 	    	    this.idPregunta = bundle.getInt("idPregunta");
 	    	    guardaPreguntaActuralPreferencias(this.idPregunta);	    	    
@@ -131,9 +131,7 @@ public class PreguntasDetalleActivity extends ListActivity {
 	    	Cursor cursor = db.rawQuery("SELECT idRespuestaPosible,valor FROM respuestas WHERE idPregunta = "+ idPregunta +" ORDER BY idRespuestaPosible", null);
 	    	startManagingCursor(cursor);
 	    	return cursor;
-	    }	    
-	    
-		
+	    }		
 		
 		/**
 		 * Guardamos en BBDD que ha respondido el usuario
@@ -147,8 +145,7 @@ public class PreguntasDetalleActivity extends ListActivity {
 					db.execSQL("UPDATE preguntas SET idRespuestaDada = "+ idRespuesta +" WHERE idPregunta = " + idPregunta +" ;"); 
 			}			
 			//Hay que hacer una llamada al WS remoto para enviar la respuesta.....
-		}
-			
+		}			
 	    
 	    /**
 	     * Obtiene los datos de una pregunta desde la BBDD por su código

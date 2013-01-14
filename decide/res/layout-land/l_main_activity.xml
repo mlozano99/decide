@@ -3,20 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_gravity="top|center_vertical|center_horizontal" >
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignWithParentIfMissing="false"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="false"
-        android:layout_centerVertical="false"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginTop="20dp" >
+    android:layout_centerHorizontal="true"
+    android:layout_centerInParent="true"
+    android:layout_centerVertical="false"
+    android:layout_gravity="top|center_vertical|center_horizontal"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginTop="20dp" >
 
         <Button
             android:id="@+id/ba1_comunidades"
@@ -24,13 +17,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="0dp"
+            android:layout_centerHorizontal="false"
+            android:layout_centerInParent="false"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/bt_selector"
             android:drawablePadding="4dp"
             android:drawableTop="@drawable/i_comu"
             android:onClick="ListaComunidades"
-            android:padding="20dp"
+            android:padding="0dp"
             android:text="@string/bt_titulo_comunidad" />
 
         <Button
@@ -39,13 +34,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="0dp"
+            android:layout_marginRight="40dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/bt_selector"
             android:drawablePadding="4dp"
             android:drawableTop="@drawable/i_comu"
             android:onClick="Cuenta"
-            android:padding="20dp"
+            android:padding="0dp"
             android:text="@string/bt_titulo_cuenta" />
 
         <Button
@@ -55,12 +50,13 @@
             android:layout_alignParentBottom="false"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/ba1_comunidades"
-            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="34dp"
             android:background="@drawable/bt_selector"
             android:drawablePadding="4dp"
             android:drawableTop="@drawable/i_comu"
             android:onClick="Preguntas"
-            android:padding="20dp"
+            android:padding="0dp"
             android:text="@string/bt_titulo_preguntas" />
 
         <Button
@@ -70,31 +66,16 @@
             android:layout_alignParentBottom="false"
             android:layout_alignParentRight="true"
             android:layout_below="@id/ba1_buenta"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="34dp"
             android:background="@drawable/bt_selector"
             android:drawablePadding="4dp"
             android:drawableTop="@drawable/i_comu"
             android:onClick="Info"
-            android:padding="20dp"
+            android:padding="0dp"
             android:text="@string/bt_titulo_info" />
 
     </RelativeLayout>
-
-	<FrameLayout
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignParentBottom="true"
-	    android:layout_alignParentRight="true" >
-
-		<Button
-		    android:id="@+id/ba1_testgcm"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:minHeight="24dp"
-		    android:onClick="TestGCM"
-		    android:text="@string/titulo_Test_GCM" />
-
-	</FrameLayout>
     
-</RelativeLayout>
+    
+

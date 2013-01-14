@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >      
+    
+   	<TextView
+		android:id="@+id/tv_ListaPreguntas"
+		style="@style/Titulo_pagina"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:padding="13dp"
+		android:textSize="22sp" 
+		android:text="@string/ti_Pregunta"/>
+    
+   	
+   	
+    <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:focusable="true"
+            android:listSelector="@drawable/list_selector" >            
+   </ListView>    
+    
+    	
+   
+</RelativeLayout>

@@ -25,7 +25,14 @@
 	<color name="textos">#000000</color>
 	<color name="texto_botones">#FFFFFF</color>	
 	
-	 
+	
+	<!--  Botones principal -->
+	<color name="boton_border">#000000</color>
+	   
+    <color name="star_color_def">#000000</color>
+    <color name="end_color_def">#FFFFFF</color> 
+    <color name="star_color">#000000</color>
+    <color name="end_color">#FFFFFF</color> 
 	
 	
 	
