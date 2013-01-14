@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.google.gson.Gson;
@@ -379,13 +380,17 @@ public class PruebaServiciosActivity extends BaseActivity {
 	    		pares.add( new BasicNameValuePair("idComunidad",  Integer.toString(idComunidad) ) );
 	    		 		    
 				try {
-
-					android.util.Log.i("EnviarDesuscripcionUsuarioComunidad","Peticion a " + Repositorio.URLdesuscripcion);		
+					// Hay que probar si funciona correctamente esto!!!!!!!!!!!!!!!!!!!
+					/*Log.i("EnviarDesuscripcionUsuarioComunidad","Peticion DELETE a " + Repositorio.URLsuscripciones + "?" + URLEncodedUtils.format(pares, "utf-8") );					
+					request = new HttpDelete(Repositorio.URLsuscripciones  + "?" + URLEncodedUtils.format(pares, "utf-8"));							
+					client.execute(request); // No hace falta el response... no hay respuesta a esta peticion desde el servidor					*/
+					
+					android.util.Log.i("EnviarDesuscripcionUsuarioComunidad","Peticion a " + Repositorio.URLdesuscripcion);    
+					
 					request = new HttpPost(Repositorio.URLdesuscripcion);
-					request.setEntity(new UrlEncodedFormEntity(pares));				
-					client.execute(request); // No hace falta el response... no hay respuesta a esta peticion desde el servidor							
-		
-					publishProgress();
+					request.setEntity(new UrlEncodedFormEntity(pares));        
+					client.execute(request); // No hace falta el response... no hay respuesta a esta peticion desde el servidor              
+					   
 					
 				}catch (Exception e) {
 					e.printStackTrace();
