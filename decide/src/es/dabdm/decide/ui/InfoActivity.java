@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
 import android.os.Bundle;
 import android.webkit.WebView;
@@ -19,7 +20,7 @@ public class InfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         
     	WebView webVisor = (WebView) findViewById(R.id.visorWeb);
-    	webVisor.loadData(leerHtml("info.html"), "text/html", "iso-8859-1");
+    	webVisor.loadData(leerHtml("info.html"), "text/html", "utf-8");
    	
         	
 	}	
@@ -44,7 +45,9 @@ public class InfoActivity extends BaseActivity {
         	e.printStackTrace();
         }
 
-        //String s = android.util.Base64.encodeToString(sb.toString().getBytes("8859-1"), android.util.Base64.DEFAULT);
+        //String s = sb.toString();
+        //(charset)getBytes("ISO8859_1"), android.util.Base64.DEFAULT);
+        //s= android.util.Base64.encodeToString(s.getBytes(Charset.forName("ISO-8859-1")),android.util.Base64.DEFAULT);
         return sb.toString();
 	}
 	
